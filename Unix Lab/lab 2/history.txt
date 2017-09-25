@@ -1,0 +1,1000 @@
+  998  clear
+  999  gcc johnson.c
+ 1000  clear
+ 1001  gcc johnson.c
+ 1002  ./a.out
+ 1003  clear
+ 1004  gcc johnson.c
+ 1005  ./a.out
+ 1006  clear
+ 1007  gcc johnson.c
+ 1008  ./a.out
+ 1009  cd 232/daa/lab9
+ 1010  cc johnson.c
+ 1011  ./a.out
+ 1012  cd 232/daa/lab10
+ 1013  cc kar.c
+ 1014  clear
+ 1015  cc kar.c
+ 1016  clear
+ 1017  cc kar.c
+ 1018  clear
+ 1019  gcc kar.cpp
+ 1020  c++
+ 1021  sudo apt-get install g++
+ 1022  clear
+ 1023  sudo apt-get install g++
+ 1024  gcc kar.cpp
+ 1025  cc kar.gcc
+ 1026  cc kar.cpp
+ 1027  sudo apt-get install g++
+ 1028  cd 232/daa/lab10
+ 1029  gcc kar.cpp
+ 1030  g++ kar.cpp
+ 1031  g++ kar2.cpp
+ 1032  cd 232/daa/lab10
+ 1033  ls
+ 1034  gcc kar.cpp
+ 1035  clear
+ 1036  gcc kar.cpp
+ 1037  clear
+ 1038  gcc kar.c
+ 1039  clear
+ 1040  g++ kar.cpp
+ 1041  g++ kar1.cpp
+ 1042  clear
+ 1043  g++ kar1.cpp
+ 1044  clear
+ 1045  g++ kar2.cpp
+ 1046  clear
+ 1047  gcc kar.c
+ 1048  clear
+ 1049  gcc kar.c
+ 1050  clear
+ 1051  gcc kar.c
+ 1052  clear
+ 1053  gcc kar.c
+ 1054  clear
+ 1055  gcc kar.c
+ 1056  ./a.out
+ 1057  gcc kar.c
+ 1058  clear
+ 1059  gcc kar.c
+ 1060  clear
+ 1061  gcc kar.c
+ 1062  clear
+ 1063  gcc kar.c
+ 1064  g++ krag.cpp
+ 1065  ./a.out
+ 1066  g++ krag.cpp
+ 1067  ./a.out
+ 1068  cd ../..
+ 1069  cd lab/lab8
+ 1070  cd daa/lab8
+ 1071  kls
+ 1072  ls
+ 1073  cc main.c
+ 1074  ./a.out
+ 1075  cc string.c
+ 1076  ./a.out
+ 1077  cd ..
+ 1078  cd lab10
+ 1079  cc dij.c
+ 1080  cd ../lab9
+ 1081  cc dij.c
+ 1082  ./a.out
+ 1083  cd ../lab10
+ 1084  g++ krag.cpp
+ 1085  ./a.out
+ 1086  ipconfig /all
+ 1087  sudo apt-get install scp
+ 1088  scp
+ 1089  sudo service --status-all
+ 1090  clear
+ 1091  history
+ 1092  ifconfig -a
+ 1093  clear
+ 1094  cd 232/network/raw
+ 1095  ls
+ 1096  cc prac.c
+ 1097  ./a.out
+ 1098  root
+ 1099  clear
+ 1100  ls
+ 1101  gcc recvtcpGV.c
+ 1102  gcc recvtcpGV.c -o k
+ 1103  sudo ./k
+ 1104  scp prc.c student@10.100.55.81:~/Desktop
+ 1105  gedit end.c &
+ 1106  cc end.c
+ 1107  ./a.out
+ 1108  cc end.c
+ 1109  ./a.out
+ 1110  gedit end1.c &
+ 1111  cc end.c
+ 1112  ./a.out
+ 1113  cc end.c
+ 1114  ./a.out
+ 1115  cc end1.c
+ 1116  ./a.out
+ 1117  cc end1.c
+ 1118  ./a.out
+ 1119  cc end1.c
+ 1120  ./a.out
+ 1121  cc end.c
+ 1122  ./a.out
+ 1123  cc end.c
+ 1124  ./a.out
+ 1125  cc end.c
+ 1126  ./a.out
+ 1127  cc end.c
+ 1128  ./a.out
+ 1129  cc end.c
+ 1130  ./a.out
+ 1131  cc end1.c
+ 1132  ./a.out
+ 1133  cc end1.c
+ 1134  ./a.out
+ 1135  cc end1.c
+ 1136  ./a.out
+ 1137  ls
+ 1138  cc end1.c
+ 1139  ls
+ 1140  cc end1.c
+ 1141  ./a.out
+ 1142  gedit end1.c &
+ 1143  gedit end.c &
+ 1144  cc end1.c
+ 1145  ./a.out
+ 1146  cc end1.c
+ 1147  ./a.out
+ 1148  cc end.c
+ 1149  ./a.out
+ 1150  cc end.c
+ 1151  ./a.out
+ 1152  gedit end2.c &
+ 1153  cc end2.c
+ 1154  ./a.out
+ 1155  cc end2.c
+ 1156  ./a.out
+ 1157  cc end2.c
+ 1158  ./a.out
+ 1159  cc end2.c
+ 1160  ./a.out
+ 1161  cc end2.c
+ 1162  ./a.out
+ 1163  cc end2.c
+ 1164  ./a.out
+ 1165  cc end2.c
+ 1166  ./a.out
+ 1167  clear
+ 1168  cc end.c
+ 1169  ./a.out
+ 1170  cc end.c
+ 1171  ./a.out
+ 1172  cc end.c
+ 1173  ./a.out
+ 1174  clear
+ 1175  ./a.out
+ 1176  clear
+ 1177  cc end.c
+ 1178  clear
+ 1179  ./a.out
+ 1180  clear
+ 1181  ./a.out
+ 1182  clear
+ 1183  ./a.out
+ 1184  sudo add-apt-repository
+ 1185  sudo add-apt-repository ppa:webupd8team/sublime-text-3
+ 1186  sudo apt-get update
+ 1187  sudo apt-get install sublime-text-installer
+ 1188  mkdir it204
+ 1189  cd it204
+ 1190  mkdir lab1
+ 1191  cd lab0
+ 1192  mkdir lab0
+ 1193  cd lab0
+ 1194  python prob1.py
+ 1195  python
+ 1196  python3
+ 1197  exit
+ 1198  ls
+ 1199  sudo apt-get install vikm
+ 1200  sudo apt-get install vim
+ 1201  vim
+ 1202  ls
+ 1203  cd it204
+ 1204  ls
+ 1205  cd lab0
+ 1206  ls
+ 1207  cd ..
+ 1208  mkdir it232
+ 1209  cd it232
+ 1210  mkdir lab0
+ 1211  cd lab0
+ 1212  subl prob1.c
+ 1213  touch prob1.c
+ 1214  ls
+ 1215  cc prob1.c
+ 1216  ./a.out
+ 1217  touch prob2.c
+ 1218  subl prob2.c
+ 1219  cc prob2.c
+ 1220  ./a.out
+ 1221  touch prob3.c
+ 1222  subl prob3.c
+ 1223  cc prob3.c
+ 1224  ./a.out
+ 1225  touch prob4.c
+ 1226  subl prob4.c
+ 1227  ls
+ 1228  cc prob4.c
+ 1229  ./a.out
+ 1230  cc prob4.c
+ 1231  ./a.out
+ 1232  cc prob4.c
+ 1233  ./a.out
+ 1234  touch prob5.c
+ 1235  subl prob5.c
+ 1236  cc prob5.c
+ 1237  ./a.out
+ 1238  cc prob5.c
+ 1239  ./a.out
+ 1240  cc prob5.c
+ 1241  ./a.out
+ 1242  cc prob5.c
+ 1243  ./a.out
+ 1244  cc prob5.c
+ 1245  ./a.out
+ 1246  cc prob5.c
+ 1247  ./a.out
+ 1248  cc prob5.c
+ 1249  ./a.out
+ 1250  cc prob5.c
+ 1251  ./a.out
+ 1252  cc prob5.c
+ 1253  ./a.out
+ 1254  cc prob5.c
+ 1255  ./a.out
+ 1256  touch prob6.c
+ 1257  subl prob6.c
+ 1258  subl prob2.c
+ 1259  cc prob6.c
+ 1260  ./a.out
+ 1261  touch prob7.c
+ 1262  subl prob7.c
+ 1263  cc prob7.c
+ 1264  ./a.out
+ 1265  touch prob8.c
+ 1266  subl prob 8.c
+ 1267  ls
+ 1268  subl prob8.c
+ 1269  cc prob8.c
+ 1270  ./a.out
+ 1271  cc prob8.c
+ 1272  ./a.out
+ 1273  cc prob8.c
+ 1274  ./a.out
+ 1275  cc prob8.c
+ 1276  ./a.out
+ 1277  cc prob8.c
+ 1278  ./a.out
+ 1279  touch prog9.c
+ 1280  subl prog9.c
+ 1281  subl prog8.c
+ 1282  subl prob8.c
+ 1283  cc prog9.c
+ 1284  ./a.out
+ 1285  cc prog9.c
+ 1286  ./a.out
+ 1287  touch prog10.c
+ 1288  subl prog10.c
+ 1289  vi lab1.c
+ 1290  cc lab1.c
+ 1291  vi lab1.c
+ 1292  cc lab1.c
+ 1293  vi lab1.c
+ 1294  cc lab1.c
+ 1295  vi lab1.c
+ 1296  cc lab1.c
+ 1297  vi lab1.c
+ 1298  cc lab1.c
+ 1299  vi lab1.c
+ 1300  vi lab2.c
+ 1301  cc lab2.c
+ 1302  vi lab2.c
+ 1303  cc lab2.c
+ 1304  vi lab2.c
+ 1305  cc lab2.c
+ 1306  vi lab2.c
+ 1307  cc lab2.c
+ 1308  vi lab2.c
+ 1309  cc lab2.c
+ 1310  vi lab3.c
+ 1311  cc lab3.c
+ 1312  vi lab3.c
+ 1313  cc lab3.c
+ 1314  vi lab3.c
+ 1315  cc lab3.c
+ 1316  vi lab3.c
+ 1317  vi a.c
+ 1318  chmod 755 a.sh
+ 1319  chmod +x a.sh
+ 1320  ls *.sh
+ 1321  ls 
+ 1322  nano a1.sh
+ 1323  pwd
+ 1324  cd unix
+ 1325  pwd
+ 1326  cd unix
+ 1327  pwd
+ 1328  echo $SHELL
+ 1329  v=1
+ 1330  v
+ 1331  v=1
+ 1332  v
+ 1333  echo hello world
+ 1334  echo "hello world"
+ 1335  echo "hello     world"
+ 1336  echo hello     world
+ 1337  echo "hello     world\n"
+ 1338  echo -e "hello     world\n"
+ 1339  expr 1+2
+ 1340  expr 1 + 2
+ 1341  chmod a.sh
+ 1342  chmod --help
+ 1343  pwd
+ 1344  cd unix
+ 1345  chmod 755 b.sh
+ 1346  ./b.sh
+ 1347  chmod 755 b1.sh
+ 1348  ./b1.sh
+ 1349  chmod 755 b2.sh
+ 1350  ./b2.sh
+ 1351  chmod 755 b2.sh
+ 1352  ./b2.sh
+ 1353  chmod 755 b2.sh
+ 1354  ./b2.sh
+ 1355  chmod 755 b2.sh
+ 1356  ./b2.sh 7
+ 1357  chmod 755 b2.sh
+ 1358  ./b2.sh 7
+ 1359  ./b2.sh -13
+ 1360  chmod 755 b3.sh
+ 1361  ./b3.sh 1
+ 1362  chmod 755 b3.sh
+ 1363  ./b3.sh 
+ 1364  chmod 755 b3.sh
+ 1365  ./b3.sh 
+ 1366  chmod 755 b3.sh
+ 1367  ./b3.sh 
+ 1368  chmod 755 b3.sh
+ 1369  ./b3.sh 
+ 1370  chmod 755 b3.sh
+ 1371  ./b3.sh 
+ 1372  chmod  b3.sh
+ 1373  chmod 755 b3.sh
+ 1374  ./b3.sh 
+ 1375  chmod 755 b3.sh
+ 1376  ./b3.sh 
+ 1377  chmod 755 b3.sh
+ 1378  ./b3.sh 
+ 1379  chmod 755 b3.sh
+ 1380  ./b3.sh 
+ 1381  chmod 755 b4.sh
+ 1382  ./b4.sh 
+ 1383  ./b4.sh  2
+ 1384  ./b4.sh  123
+ 1385  ./b4.sh  -123
+ 1386  ./b4.sh 0
+ 1387  ./b4.sh 1
+ 1388  ./b4.sh 01
+ 1389  ./b4.sh 0.1
+ 1390  ./b4.sh hj
+ 1391  ./b4.sh 78546924
+ 1392  ./b4.sh -78546924
+ 1393  chmod 755 b4.sh
+ 1394  ./b4.sh 1
+ 1395  ./b4.sh 23
+ 1396  ./b4.sh 1
+ 1397  chmod 755 b1.sh
+ 1398  ./b1.sh 1
+ 1399  ./b1.sh -1
+ 1400  56+5
+ 1401  ./b1.sh -1+
+ 1402  ./b4.sh 1
+ 1403  chmod 755 b4.sh
+ 1404  ./b4.sh 1
+ 1405  ./b4.sh 14
+ 1406  ./b4.sh -85456
+ 1407  chmod 755 b5.sh
+ 1408  ./b5.sh 
+ 1409  chmod 755 b6.sh
+ 1410  ./b6.sh 
+ 1411  chmod 755 b6.sh
+ 1412  ./b6.sh 
+ 1413  ./b6.sh 23
+ 1414  ./b6.sh 0
+ 1415  chmod 755 b7.sh
+ 1416  ./b6.sh 2
+ 1417  chmod 755 b8.sh
+ 1418  ./b8.sh 
+ 1419  chmod 755 r.sh
+ 1420  ./r.sh 
+ 1421  chmod 755 r.sh
+ 1422  ./r.sh 
+ 1423  chmod 755 r.sh
+ 1424  ./r.sh 
+ 1425  chmod 755 r.sh
+ 1426  ./r.sh 
+ 1427  chmod 755 r.sh
+ 1428  ./r.sh 
+ 1429  chmod 755 r.sh
+ 1430  ./r.sh 
+ 1431  chmod 755 r.sh
+ 1432  ./r.sh 
+ 1433  chmod 755 r.sh
+ 1434  ./r.sh 
+ 1435  chmod 755 r.sh
+ 1436  ./r.sh 
+ 1437  chmod 755 r1.sh
+ 1438  ./r1.sh 
+ 1439  chmod 755 r1.sh
+ 1440  ./r1.sh 
+ 1441  chmod 755 r1.sh
+ 1442  ./r1.sh 
+ 1443  chmod 755 r1.sh
+ 1444  ./r1.sh 
+ 1445  chmod 755 r.sh
+ 1446  ./r.sh 
+ 1447  chmod 755 r2.sh
+ 1448  ./r2.sh 
+ 1449  bison
+ 1450  bison --help
+ 1451  flax
+ 1452  sudo opt-get install flax
+ 1453  sudo opt-get install byacc
+ 1454  sudo apt-get install byacc
+ 1455  clear
+ 1456  sudo apt-get install bison
+ 1457  sudo apt-get install flax
+ 1458  bison
+ 1459  sudo apt-get install bison
+ 1460  sudo rm -vf /var/lib/apt/lists/*
+ 1461  sudo apt-get update
+ 1462  sudo apt-get install bison
+ 1463  sudo apt-get install flex
+ 1464  sudo apt-get install byacc
+ 1465  vi example.li
+ 1466  vi example.l
+ 1467  lex example.l
+ 1468  cc lex.yy.c -ll
+ 1469  ./a.out
+ 1470  clear
+ 1471  lex example.l
+ 1472  cc lex.yy.c -ll
+ 1473  clear
+ 1474  lex example.l
+ 1475  cc lex.yy.c -ll
+ 1476  clear
+ 1477  lex example.l
+ 1478  cc lex.yy.c -ll
+ 1479  ./a.out
+ 1480  clear
+ 1481  lex example.l
+ 1482  cc lex.yy.c -ll
+ 1483  ./a.out
+ 1484  clear
+ 1485  ./a.out
+ 1486  lex example.l
+ 1487  cc lex.yy.c -ll
+ 1488  ./a.out
+ 1489  cc lex.yy.c -ll
+ 1490  ./a.out
+ 1491  poweroff
+ 1492  mkdir lab1
+ 1493  cd it132
+ 1494  mkdir it204 ;cd it204
+ 1495  mkdir lab1 ; cd lab0
+ 1496  a.py
+ 1497  vi a.py
+ 1498  cd lab0
+ 1499  mkdir it204 ; cd it204
+ 1500  mkdir lab1 ; cd lab0
+ 1501  touch prob1.py ; subl prob1.py &
+ 1502  vi 3.c
+ 1503  vi 3.py
+ 1504  python 3.py
+ 1505  python prob1.py 
+ 1506  python r.py 
+ 1507  python fac.py 
+ 1508  mkdir it204 ; cd it204
+ 1509  touch prob1.py ; subl prob1.py &
+ 1510  python prob1.py 
+ 1511  python fac.py 
+ 1512  python r1.py 
+ 1513  python r1.py ; su
+ 1514  touch p1.py ; subl p1.py &
+ 1515  python r1.py 
+ 1516  python p1.py 
+ 1517  python e.py 
+ 1518  python fib.py 
+ 1519  python fib.py  5
+ 1520  python fib.py  
+ 1521  python 1.py  
+ 1522  python e.py 
+ 1523  python prime.py 
+ 1524  python fac.py 
+ 1525  python fib.py 
+ 1526  ls
+ 1527  mkdir it206
+ 1528  cd it206
+ 1529  cd ..
+ 1530  cd it204
+ 1531  ls
+ 1532  cd ..
+ 1533  cd it232
+ 1534  ls
+ 1535  cd lab0
+ 1536  ls
+ 1537  cd ..
+ 1538  mkdir lab1
+ 1539  cd lab1
+ 1540  vi p1.c
+ 1541  cc p1.c
+ 1542  vi p1.c
+ 1543  subl p1.c
+ 1544  cc p1.c
+ 1545  ./a.out
+ 1546  subl p1.c
+ 1547  subl p2.c
+ 1548  cc p1.c
+ 1549  ./a.out
+ 1550  subl p1.c
+ 1551  cc p1.c
+ 1552  ./a.out
+ 1553  subl p2.c
+ 1554  cc p2.c
+ 1555  cc p2.c -lm
+ 1556  touch p2.c
+ 1557  subl p2.c
+ 1558  cc p2.c -lm
+ 1559  ./a.out
+ 1560  touch p3.c
+ 1561  subl p3.c
+ 1562  cc p3.c
+ 1563  ./a.out
+ 1564  subl p3.c
+ 1565  ./a.out
+ 1566  cc p3.c
+ 1567  ./a.out
+ 1568  touch p4.c
+ 1569  subl p4.c
+ 1570  cc p4.c
+ 1571  ./a.out
+ 1572  cc p4.c
+ 1573  ./a.out
+ 1574  touch p5.c
+ 1575  subl p5.c
+ 1576  cc p5.c
+ 1577  ./a.out
+ 1578  subl p5.c
+ 1579  cc p5.c
+ 1580  ./a.out
+ 1581  cc p5.c
+ 1582  ./a.out
+ 1583  subl p5.c
+ 1584  cc p5.c
+ 1585  ./a.out
+ 1586  cc p5.c
+ 1587  ./a.out
+ 1588  cc p5.c
+ 1589  ./a.out
+ 1590  cc p5.c
+ 1591  ./a.out
+ 1592  vi p6.c
+ 1593  cc p6.c
+ 1594  vi p6.c
+ 1595  cc p6.c
+ 1596  ./a.out
+ 1597  vi p7.c
+ 1598  cc p7.c
+ 1599  ./a.out
+ 1600  vi p7.c
+ 1601  vi p8.c
+ 1602  cc p8.c
+ 1603  vi p8.c
+ 1604  cc p8.c
+ 1605  ./a.out
+ 1606  vi p8.c
+ 1607  cc p8.c
+ 1608  ./a.out
+ 1609  vi p8.c
+ 1610  cc p8.c
+ 1611  ./a.out
+ 1612  vi p8.c
+ 1613  vi p9.c
+ 1614  cc p9.c
+ 1615  vi p9.c
+ 1616  cc p9.c
+ 1617  ./a.out
+ 1618  vi data.txt
+ 1619  vi data1.txt
+ 1620  cc p9.c
+ 1621  ./a.out
+ 1622  vi p10.c
+ 1623  cc p9.c
+ 1624  cc p10.c
+ 1625  vi p10.c
+ 1626  cc p10.c
+ 1627  vi p10.c
+ 1628  cc p10.c
+ 1629  ./a.out
+ 1630  vi p11.c
+ 1631  vi p1.c
+ 1632  vi p11.c
+ 1633  cc p11.c
+ 1634  ./a.out
+ 1635  vi p11.c
+ 1636  cc p11.c
+ 1637  ./a.out
+ 1638  vi p11.c
+ 1639  cc p11.c
+ 1640  ./a.out
+ 1641  vi p13.c
+ 1642  cc p13.c
+ 1643  vi p13.c
+ 1644  cc p13.c
+ 1645  ./a.out
+ 1646  cc p1.c
+ 1647  ./a.out
+ 1648  cc p2.c
+ 1649  cc p2.c -lm
+ 1650  ./a.out
+ 1651  cc p3.c
+ 1652  ./a.out
+ 1653  cc p4.c
+ 1654  ./a.out
+ 1655  cc p5.c
+ 1656  ./a.out
+ 1657  cc p6.c
+ 1658  ./a.out
+ 1659  cc p7.c
+ 1660  ./a.out
+ 1661  cc p8.c
+ 1662  ./a.out
+ 1663  cc p13.c
+ 1664  ./a.out
+ 1665  vi p6.c
+ 1666  quit
+ 1667  vi a.c
+ 1668  cd it204
+ 1669  ls
+ 1670  mkdir pop
+ 1671  ls
+ 1672  cd pop
+ 1673  ls
+ 1674  subl a.c
+ 1675  cc a.c
+ 1676  ./a.out
+ 1677  cc a.c
+ 1678  ./a.out
+ 1679  cc a.c
+ 1680  ./a.out
+ 1681  cc a.c
+ 1682  ./a.out
+ 1683  cc a.c
+ 1684  ./a.out
+ 1685  cc a.c
+ 1686  ./a.out
+ 1687  cc a.c
+ 1688  ./a.out
+ 1689  cc a.c
+ 1690  ./a.out
+ 1691  cc a.c
+ 1692  ./a.out
+ 1693  cc a.c
+ 1694  ./a.out
+ 1695  cc a.c
+ 1696  ./a.out
+ 1697  subl 4.c
+ 1698  cc 4.c
+ 1699  ./a.out
+ 1700  cc 4.c
+ 1701  ./a.out
+ 1702  cc 4.c
+ 1703  ./a.out
+ 1704  cc 4.c
+ 1705  ./a.out
+ 1706  cc 4.c
+ 1707  1 2
+ 1708  cc 4.c
+ 1709  ./a.out
+ 1710  cc 4.c
+ 1711  ./a.out
+ 1712  subl 7.c
+ 1713  cc 7.c
+ 1714  cc 4.c
+ 1715  cc 7.c
+ 1716  ./a.out
+ 1717  cc 7.c
+ 1718  ./a.out
+ 1719  cc 7.c
+ 1720  ./a.out
+ 1721  cc 7.c
+ 1722  ./a.out
+ 1723  cc 7.c
+ 1724  ./a.out
+ 1725  cc 7.c
+ 1726  ./a.out
+ 1727  subl 2.c
+ 1728  cc 2.c
+ 1729  ./a.out
+ 1730  cc 2.c
+ 1731  ./a.out
+ 1732  cc 2.c
+ 1733  ./a.out
+ 1734  cc a.c
+ 1735  ./a.out
+ 1736  cc 4.c
+ 1737  ./a.out
+ 1738  cc 2.c
+ 1739  ./a.out
+ 1740  cd it204
+ 1741  ls
+ 1742  cd lab0
+ 1743  ls
+ 1744  cd ..
+ 1745  cd lab1
+ 1746  ls
+ 1747  cd ..
+ 1748  ls
+ 1749  cd it206
+ 1750  ls
+ 1751  cd ..
+ 1752  cd it232
+ 1753  ls
+ 1754  cd lab0
+ 1755  ls
+ 1756  cd ..
+ 1757  cd lab1
+ 1758  ls
+ 1759  cd ..
+ 1760  mkdir lab2
+ 1761  cd lab2
+ 1762  subl p1.java
+ 1763  touch p1.java
+ 1764  javac p1.java
+ 1765  java p1
+ 1766  javac p1.java
+ 1767  java p1
+ 1768  touch p2.java
+ 1769  subl p2.java
+ 1770  javac p2.java
+ 1771  java p2
+ 1772  touch p4.java
+ 1773  subl p4.java
+ 1774  touch p3.java
+ 1775  subl p3.java
+ 1776  javac p3.java
+ 1777  java p3
+ 1778  javac p4.java
+ 1779  java p4
+ 1780  subl p3.java
+ 1781  javac p3.java
+ 1782  java p3
+ 1783  cd pop_lab_135/
+ 1784  cd lab2
+ 1785  javac prog1.java
+ 1786  java prog1
+ 1787  javac prog2.java
+ 1788  java prog2
+ 1789  javac prog3.java
+ 1790  java prog3
+ 1791  java prog1
+ 1792  exit
+ 1793  cd pop_lab_135/
+ 1794  cd lab2
+ 1795  javac prog1.java
+ 1796  java prog1
+ 1797  javac prog2.java
+ 1798  java prog2
+ 1799  javac prog3.java
+ 1800  javac prog3.java
+ 1801  java prog3
+ 1802  javac prog3.java
+ 1803  java prog3
+ 1804  cd pop_lab_135/
+ 1805  cd lab2
+ 1806  javac prog1.java
+ 1807  java prog1
+ 1808  javac prog2.java
+ 1809  java prog2
+ 1810  javac prog2.java
+ 1811  java prog2
+ 1812  cd pop_lab_135/lab2
+ 1813  javac prog1.java
+ 1814  java prog1
+ 1815  javac prog2.java
+ 1816  java prog2
+ 1817  java prog_2.java
+ 1818  ls
+ 1819  javac prog_2.java
+ 1820  java prog_2
+ 1821  javac prog3.java
+ 1822  java prog3
+ 1823  javac prog4.java
+ 1824  java prog4
+ 1825  ls
+ 1826  mkdir pop_lab_135
+ 1827  cd pop_lab_135/
+ 1828  mkdir lab3
+ 1829  cd lab3
+ 1830  subl p1.java
+ 1831  subl prog1.java
+ 1832  cd ..
+ 1833  ls
+ 1834  cd it232
+ 1835  ls
+ 1836  cd lab2
+ 1837  ls
+ 1838  cd ..
+ 1839  cd pop_lab_135/
+ 1840  mv lab3 lab2
+ 1841  cd lab2
+ 1842  ls
+ 1843  subl prog1.java
+ 1844  javac prog1.java
+ 1845  java prog1
+ 1846  subl prog2.java
+ 1847  javac prog2.java
+ 1848  java prog2
+ 1849  java prog2
+ 1850  javac prog2.java
+ 1851  java prog2
+ 1852  javac prog2.java
+ 1853  java prog2
+ 1854  clear
+ 1855  ls
+ 1856  subl prog3.java
+ 1857  javac prog3.java
+ 1858  java prog3
+ 1859  javac prog3.java
+ 1860  java prog3
+ 1861  clear
+ 1862  ls
+ 1863  subl prog4.java
+ 1864  javac prog4.java
+ 1865  java prog4
+ 1866  javac prog4.java
+ 1867  java prog4
+ 1868  javac prog3.java
+ 1869  java prog3
+ 1870  javac prog3.java
+ 1871  java prog3
+ 1872  javac prog3.java
+ 1873  java prog3
+ 1874  javac prog3.java
+ 1875  java prog3
+ 1876  cd ..
+ 1877  ls
+ 1878  cd it232
+ 1879  ls
+ 1880  cd lab2
+ 1881  ls
+ 1882  subl p2.java
+ 1883  cd ..
+ 1884  cd pop_lab_135/
+ 1885  cd lab2
+ 1886  subl prog_2.java
+ 1887  javac prog_2.java
+ 1888  java prog_2
+ 1889  javac prog2.java
+ 1890  java prog2
+ 1891  javac prog_2.java
+ 1892  cal
+ 1893  tty
+ 1894  tty
+ 1895  dog
+ 1896  alias dog " echo it is animal"
+ 1897  stty
+ 1898  tty
+ 1899  dog
+ 1900  alias dog 'echo it is animal'
+ 1901  dog
+ 1902  alias dog -'echo it is animal'
+ 1903  dog
+ 1904  alias dog = 'echo it is animal'
+ 1905  dog
+ 1906  alias cat='it's an animal'
+ 1907  cat
+ 1908  exit()
+ 1909  exit
+ 1910  tty
+ 1911  parrot
+ 1912  sudo apt install parrot-minimal
+ 1913  alias parrot ='echo it is bird'
+ 1914  alias parrot='echo it is bird'
+ 1915  parrot
+ 1916  alias g='gedit a.sh'
+ 1917  g
+ 1918  ./a.sh
+ 1919  pwd
+ 1920  alias g='gedit b.sh'
+ 1921  g
+ 1922  ./b.sh
+ 1923  alias g='gedit c.sh'
+ 1924  g
+ 1925  ./b.sh
+ 1926  who-H
+ 1927  Who-H
+ 1928  Who- H
+ 1929  Who - H
+ 1930  gedit 755 a.sh
+ 1931  chmod 755 a.sh
+ 1932  ./a.sh
+ 1933  gedit 755 a.sh
+ 1934  who - H
+ 1935  who -H
+ 1936  stty eof^H
+ 1937  stty eof ^H
+ 1938  stt -a
+ 1939  stty -a
+ 1940  stty eof ^Ramkumar
+ 1941  stty -a
+ 1942  stty eof ^Ramkumarstty sane
+ 1943  stty -a
+ 1944  stty kill ^P
+ 1945  stty -a
+ 1946  stty sane
+ 1947  stty -a
+ 1948  printf"The shell is %s"$echo
+ 1949  printf "The shell is %s"$echo
+ 1950  printf "The shell is %s" $ echo
+ 1951  printf"The shell is %s"$echo
+ 1952  printf"The shell is %s"$ cool
+ 1953  printf"The shell is %s"$cool
+ 1954  printf "The shell is %s" cool
+ 1955  printf "The shell is %s" $SHELL
+ 1956  printf "The shell is %s" ,$SHELL
+ 1957  printf "The shell is %s" ,$ SHELL
+ 1958  printf "The shell is %s" , $ SHELL
+ 1959  printf "The shell is %s", $ SHELL
+ 1960  printf "The shell is %s", $SHELL
+ 1961  printf "The shell is %s",$ SHELL
+ 1962  printf "The shell is %s", $SHELL
+ 1963  printf "The shell is %s",$ SHELL
+ 1964  cat
+ 1965  cat >b.sh
+ 1966  gedit pass.sh
+ 1967  chmod +x pass.sh
+ 1968  ./pass.sh
+ 1969  date +'%h %m'
+ 1970  date '%h
+ 1971  date '%h'
+ 1972  date '%m'
+ 1973  date '%m '
+ 1974  date ' %m '
+ 1975  date ' %y '
+ 1976  date '%y'
+ 1977  date
+ 1978  date +'%h'
+ 1979  date +'%m'
+ 1980  date +'%s'
+ 1981  date +'%i'
+ 1982  date +'%I'
+ 1983  date +'%p'
+ 1984  uname
+ 1985  uname -a
+ 1986  gedit pass.sh
+ 1987  begsjkhxcvjkghsukehjxvghukbgdjn
+ 1988  qwertyuiopasdfghjklzxcvbn.sh
+ 1989  ls
+ 1990  cd unix_135
+ 1991  mkdir unix_135
+ 1992  cd unix_135/
+ 1993  mkdir lab2
+ 1994  cd lab2
+ 1995  subl p1.sh
+ 1996  history
+ 1997  history > history.txt
