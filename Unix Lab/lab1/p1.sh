@@ -6,7 +6,7 @@ read t
 echo "Enter ROI:"
 read r
  
-i=` expr $p \* $t \* $r `
+((i=$p*$t*$r))
 #i=` expr $i / 100 `
  echo -n "Simple Interest: "
 echo "scale=2;`expr $i/100`"|bc

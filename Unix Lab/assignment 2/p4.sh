@@ -19,13 +19,13 @@ done
 echo "pos:$c neg:$cn zeros:$cz"
 for ((i=0;i<9;i++))
 do
- for((j=0;j<9;j++))
+ for((j=$i;j<9;j++))
  do
-if [ ${a[j]} -ge ${a[$((j+1))]} ]
+if [ ${a[$i]} -ge ${a[$j]} ]
 then
   v=${a[$j]}
-  a[$j]=${a[$((j+1))]}
-  a[$((j+1))]=$v
+  a[$j]=${a[$j]}
+  a[$j]=$v
     fi
  done
 done

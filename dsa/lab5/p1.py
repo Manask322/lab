@@ -70,13 +70,13 @@ class BinarySearchTree:
 		node=self.search(k)
 		if node.left==None and node.right==None:
 			y=node.parent
-			print("leaf")
+			#print("leaf")
 			if y.right==node:
 				y.right=None
 			else:
 				y.left=None
 		elif node.left==None and node.right!=None or node.left!=None and node.right==None:
-			print("1 child")
+			#print("1 child")
 			y=node.parent
 			if node.right!=None:
 				node.right.parent=y
@@ -94,11 +94,18 @@ class BinarySearchTree:
 			node.left=None
 			node.right=None
 		elif node.left!=None and node.right!=None:
-			print("2 child")
+			#print("2 child")
 			y_ref=self.predecessor(node.key)
 			#y_ref=self.search(y)
-			node.key=y_ref.key
+			#print("@@@@@")
+			#print(node)
+			#print("@@@@@")
+			#print("@@@@@")
+			#print(y_ref)
+			#print("@@@@@")
 			self.delete(y_ref)
+			node.key=y_ref
+			#self.delete(y_ref)
 	def traverse(self,x):
 		if x==None:
 			return
@@ -131,10 +138,12 @@ def main():
 	#print(t.maximum(t.root))
 	#print(t.minimum(t.root))
 	#print(t.sucessor(3))
-    
+	#print("@@@@@")
+	#print(t.predecessor(3))
+	#print("@@@@@")
 	t.delete(7)
 	t.delete(3)
-	print(t.search(7))
+	#print(t.search(7))
 	print("***********")
 	t.traverse(t.root)
 	print("***********")
