@@ -110,10 +110,41 @@ class BinarySearchTree:
 		if x==None:
 			return
 		else:
+			print(x.key)
 			self.traverse(x.left)
 			self.traverse(x.right)
-			print(x.key)
-			
+	def post(self,x):
+		if x==None:
+			return
+		else:
+			if x.key in ['+','-','*','/']:
+				x=x.left
+				self.post(x)
+				x=x.parent
+				x=x.right
+				self.post(x)
+				x=x.parent
+				print(x.key)
+			else:
+				print(x.key)
+	def eval(self,x):
+		if x.left==None and x.right==None:
+			return x.key
+		else:
+			op1=self.eval(x.left)
+			op2=self.eval(x.right)
+			result=self.apply(op1,op2,x.key)
+			return result
+	def apply(self,op1,op2,op):
+		if op=='+':
+			ans=int(op1)+int(op2)
+		elif op=='-':
+			ans=int(op2)-int(op1)
+		elif op=='*':
+			ans=int(op2)*int(op1)
+		elif op=='/':
+			ans=int(op2)/int(op1)
+		return ans
 def main():
 	t=BinarySearchTree()
 	expression=input()
@@ -139,9 +170,9 @@ def main():
 			temp.key+=i
 			temp=temp.parent
 	t.traverse(t.root)
+	#print(out)
+	print("************")
+	t.post(t.root)
+	print("answer:",t.eval(t.root))
 if __name__ == '__main__':
     	main()   
-#If the current token is a '(', add a new node as the left child of the current node, and descend to the left child. 
-#If the current token is in the list ['+','-','/','*'], set the root value of the current node to the operator represented by the current token. Add a new node as the right child of the current node and descend to the right child.
-#If the current token is a number, set the root value of the current node to the number and return to the parent.
-#If the current token is a ')', go to the parent of the current node.
