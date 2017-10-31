@@ -1,6 +1,5 @@
 class BinaryHeaps:
 	def __init__(self,in_list=[None]*100):
-		#n=len(l)
 		self.elements=in_list
 		self.end=0
 		if in_list[0] is None:
@@ -16,7 +15,7 @@ class BinaryHeaps:
 		self.elements[self.end]=k
 		pi=int(self.end/2)
 		i=self.end
-		while(pi!=0 and self.elements[pi]<self.elements[i]):
+		while(pi!=0 and self.elements[pi]>self.elements[i]):
 			t=self.elements[i]
 			self.elements[i]=self.elements[pi]
 			self.elements[pi]=t
@@ -24,7 +23,7 @@ class BinaryHeaps:
 			pi//=2
 	def maximum(self):
 		return self.elements[1]
-	def extract_max(self):
+	def extract_min(self):
 		x=self.elements[1]
 		t=self.elements[self.end]
 		self.elements[self.end]=self.elements[1]
@@ -40,18 +39,18 @@ class BinaryHeaps:
 		if self.elements[2*i]==None and self.elements[2*i+1]==None:
 			return
 		elif self.elements[2*i]!=None and self.elements[2*i+1]==None:
-			maxi=2*i
+			mini=2*i
 		elif self.elements[2*i+1]==None and self.elements[2*i]!=None:
-			maxi=2*i+1
+			mini=2*i+1
 		else:
 			if 2*i>self.end:
 				return
-			maxi=self.elements.index(max(self.elements[2*i+1],self.elements[2*i]))
-		if self.elements[maxi]>self.elements[i]:
-			t=self.elements[maxi]
-			self.elements[maxi]=self.elements[i]
+			mini=self.elements.index(min(self.elements[2*i+1],self.elements[2*i]))
+		if self.elements[mini]<self.elements[i]:
+			t=self.elements[mini]
+			self.elements[mini]=self.elements[i]
 			self.elements[i]=t
-			self.heapify(maxi)
+			self.heapify(mini)
 def main():
 	# a=[12,34,5,6,67,90]
 	# b=BinaryHeaps()
@@ -68,12 +67,12 @@ def main():
 	l=[34,67,68,120, 45,54]
 	d=BinaryHeaps(l)
 	print("*")
-	print(d.extract_max())
-	print(d.extract_max())
-	print(d.extract_max())
-	print(d.extract_max())
-	print(d.extract_max())
-	print(d.extract_max())
+	print(d.extract_min())
+	print(d.extract_min())
+	print(d.extract_min())
+	print(d.extract_min())
+	print(d.extract_min())
+	print(d.extract_min())
 		
 if __name__ == '__main__':
 	main()

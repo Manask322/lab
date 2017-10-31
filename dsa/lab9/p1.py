@@ -55,13 +55,10 @@ def bfs(graph,s):
 				vlist.append(vertex[v].n)
 				Q.append(vertex[v])
 		vertex[u.n].colour='black'
-	for v in vertex:
-		#print(v.distance)
-	#print("$$")
-	#print(vlist)
 	for i in range(len(vertex)):
-		print("vertex visisted : ",vlist[])
+		print("vertex visisted : ",vlist)
 def main():
+	adjmatrix(5,6)
 	alist,vertex=adjlist(5,6)
 	graph=(alist,vertex)
 	bfs(graph,0)
