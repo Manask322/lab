@@ -16,20 +16,12 @@ class c2 extends Abstractclass
 {
 	public void message()
 	{
-		System.out.println("This mesage was not implemented in the abstracr class");
+		System.out.println("This mesage was not implemented in the abstract class");
 	}
 		public void message1()
 	{
 		System.out.println("This mesage was not implemented in the abstracr class");
 	}
-}
-class c3 extends c2
-{
-	public void message()
-	{
-		System.out.println("This mesage was not implemented in the abstracr class");
-	}
-
 }
 class p5 
 {
