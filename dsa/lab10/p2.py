@@ -97,18 +97,20 @@ class node:
 		self.endt=None
 def adjlist(n,e):
 	a=[[] for x in range(n)]
+	w=[[[56000] for x in range(n)]for x in range(n)]
 	vertex=[None for x in range(n)]
 	for i in range(n):
 		vertex[i]=node(i)
 	print("Enter edges")
 	for i in range(e):
-		u,v=tuple(input().split(' '))
-		u,v = int(u),int(v)
+		u,v,d=tuple(input().split(' '))
+		u,v,d= int(u),int(v),int(d)
 		a[u].append(v)
 		a[v].append(u)
+		w[u][v],w[v][u]=d,d
 	# for i in range(n):
 	# 	print("Vertex ",i,": ",a[i])
-	return a,vertex
+	return a,vertex,w
 def dfs(graph,u,time,vlist):
 	alist=graph[0]
 	vertex=graph[1]
@@ -126,26 +128,26 @@ def dfs(graph,u,time,vlist):
 	time+=1
 	return vertex,vlist
 def dijkstra(graph,s):
-	vertex=graph[0]
-	alist=graph[1]
+	alist=graph[0]
+	vertex=graph[1]
+	weight=graph[2]
 	for u in vertex:
 		u.distance=56000
-	s.distance=0
+	vertex[s].distance=0
 	l=[]
 	H=BinaryHeaps(vertex)
 	while not H.isEmpty():
 		w=H.extract_min()
 		for v in alist[w.n]:
-			if w.distance+d[w.n][v.n]<v.distance:
-				v.distance=w.distance+d[w][n]
+			if w.distance+weight[w.n][v.n]<v.distance:
+				v.distance=w.distance+weight[w][n]
 				H.updatePriority(v)
-
 def main():
-	alist,vertex=adjlist(5,6)
-	graph=(alist,vertex)
+	alist,vertex,w=adjlist(5,6)
+	graph=(alist,vertex,w)
 	# print(alist)
 	for v in vertex:
 		v.colour='white'
-	
+	dijkstra(graph,0)
 if __name__ == '__main__':
 	main()
