@@ -45,7 +45,11 @@ class BinaryHeaps:
 		else:
 			if 2*i>self.end:
 				return
-			mini=self.elements.index(min(self.elements[2*i+1].distance,self.elements[2*i].distance))
+			# min(self.elements[2*i+1].distance,self.elements[2*i].distance)
+			if self.elements[2*i+1].distance<self.elements[2*i].distance:
+				mini=2*i+1
+			else:
+				mini=2*i
 		if self.elements[mini].distance<self.elements[i].distance:
 			t=self.elements[mini]
 			self.elements[mini]=self.elements[i]
@@ -58,11 +62,11 @@ class BinaryHeaps:
 			return False
 	def updatePriority(self,node):
 		i=self.elements.index(node)
-		if self.elements[int(i/2)].distance>node.distance:
+		if self.elements[int(i/2)]!=None and self.elements[int(i/2)].distance>node.distance:
 			t=self.elements[int(i/2)]
 			self.elements[int(i/2)]=self.elements[i]
 			self.elements[i]=t
-			updatePriority(self.elements[int(i/2)])
+			self.updatePriority(self.elements[int(i/2)])
 		else:
 			return
 # def main():
@@ -106,8 +110,8 @@ def adjlist(n,e):
 		u,v,d=tuple(input().split(' '))
 		u,v,d= int(u),int(v),int(d)
 		a[u].append(v)
-		a[v].append(u)
-		w[u][v],w[v][u]=d,d
+		# a[v].append(u)
+		w[u][v]=d
 	# for i in range(n):
 	# 	print("Vertex ",i,": ",a[i])
 	return a,vertex,w
@@ -139,15 +143,18 @@ def dijkstra(graph,s):
 	while not H.isEmpty():
 		w=H.extract_min()
 		for v in alist[w.n]:
-			if w.distance+weight[w.n][v.n]<v.distance:
-				v.distance=w.distance+weight[w][n]
-				H.updatePriority(v)
+			if w.distance+weight[w.n][v]<vertex[v].distance:
+				vertex[v].distance=w.distance+weight[w.n][v]
+				H.updatePriority(vertex[v])
 def main():
-	alist,vertex,w=adjlist(5,6)
+	alist,vertex,w=adjlist(5,9)
 	graph=(alist,vertex,w)
 	# print(alist)
 	for v in vertex:
 		v.colour='white'
 	dijkstra(graph,0)
+	print("distances")
+	for v in vertex:
+		print(v.distance)
 if __name__ == '__main__':
 	main()

@@ -8,3 +8,4 @@ k=$!
 # k=$(echo $$)
 ps 
 kill $k
+ps

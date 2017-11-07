@@ -33,7 +33,11 @@ class g:
 		for v in alist[u]:
 			if vertex[v].colour=='white':
 				# vlist.append(u)
+				#add to tree wdge list
 				self.dfs(graph,v,vlist)
+			else:
+				#if adj node start stop time is not over then back edge
+				#if adj node end time grater than start time of this node and 
 		vertex[u].colour='black'
 		vertex[u].endt=self.time
 		self.time+=1

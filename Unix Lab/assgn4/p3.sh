@@ -1,4 +1,5 @@
 #!/bin/bash
+rm database.txt
 select op in adding deletion finding displaying quit
 do
 	case $op in
