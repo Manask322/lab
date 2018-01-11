@@ -1,59 +1,56 @@
-def pref(n):
-	# self.free_men=[None for _ in range(n)]
-	# self.wife=[None for _ in range(n)]
-	# self.husband=[None for _ in range(n)]
-	man_pref=[[] for _ in range(n)]
-	w_pref=[[] for _ in range(n)]
+def read_from_file(file):
+	with open(file,'r') as file:
+		lines=file.readlines()
+		men=lines[0].split()
+		n=len(men)
+		women=lines[1].split()
+		men_pref=[[] for _ in range(n)]
+		w_pref=[[] for _ in range(n)]
+		for i in range(2,2+n):
+			men_pref[i-2].append(lines[i].split()[1:])
+		for i in range(2+n,len(lines)):
+			w_pref[i-(2+n)].append(lines[i].split()[1:])
+		for i in range(len(men_pref)):
+			men_pref[i]=men_pref[i][0]
+		for i in range(len(men_pref)):
+			w_pref[i]=w_pref[i][0]    
+		for i in range(n):
+			for j in range(n):
+				men_pref[i][j]=women.index(men_pref[i][j])
+		for i in range(n):
+			for j in range(n):
+				w_pref[i][j]=men.index(w_pref[i][j])
+	return n,men_pref,w_pref
+def pref():
+	n,man_pref,w_pref=read_from_file("input.txt")
 	women_pref=[[] for _ in range(n)]
-	# for i in range(n):
-	# 	print("Enter pref for man ",i)
-	# 	for j in range(n):
-	# 		p=int(input(""))
-	# 		man_pref[i].append(p)
-	# print("Women")
-	# for i in range(n):
-	# 	print("Enter pref for woman ",i)
-	# 	for j in range(n):
-	# 		p=int(input(""))
-	# 		w_pref[i].append(p)
-	man_pref=[[1,0,3,4,2],[3,1,0,2,4],[1,4,2,3,0],[0,3,2,1,4],[1,3,0,4,2]]
-	w_pref=[[4,0,1,3,2],[2,1,3,0,4],[1,2,3,4,0],[0,4,3,2,1],[3,1,4,2,0]]
 	for i in range(n):
 		for j in range(n):
-			# m=self.w_pref[i][j]
 			m=w_pref[i].index(j)
 			women_pref[i].append(m)
-	return man_pref,women_pref
+	return n,man_pref,women_pref
 def main():
-	n=int(input("Enter n"))
-	man_pref,women_pref=pref(n)
+	n,man_pref,women_pref=pref()
 	wife=[None for _ in range(n)]
 	husband=[None for _ in range(n)]
-	# free_men=[i for i in range(n)]
-	free_men=[0,1,2,3,4]
+	free_men=[i for i in range(n)]
 	proposal_count=[0 for i in range(5)]
-	m=free_men.pop(0)
+	men=[]
 	while(len(free_men)!=0):
-		# m=free_men.pop(0)
-			# print(m)
-		proposal_count[m]+=1
-		if proposal_count[m]>=5:
+		m=free_men.pop(0)
+		if proposal_count[m]==5:
 			break
 		w=man_pref[m][proposal_count[m]]
 		if husband[w]==None:
 			husband[w]=m
-			wife[m]=w
-			# print("man:",m,"women:",w,"are engaged")
 		elif husband[w]!=None:
 			h=husband[w]
 			if(women_pref[w][m]<women_pref[w][h]):
 				husband[w]=m
-				wife[m]=w
 				free_men.append(h)
-				# print("man:",m,"women:",w,"are engaged 2")
 			else:
-				free_men.append(m)
-		m=free_men.pop(0)
+				free_men.append(m)		
+		proposal_count[m]+=1
 	for i in range(n):
 		print("wife: ",i,"husband : ",husband[i])
 if __name__ == '__main__':
