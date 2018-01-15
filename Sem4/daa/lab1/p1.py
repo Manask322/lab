@@ -20,17 +20,17 @@ def read_from_file(file):
 		for i in range(n):
 			for j in range(n):
 				w_pref[i][j]=men.index(w_pref[i][j])
-	return n,men_pref,w_pref
+	return n,men_pref,w_pref,men,women
 def pref():
-	n,man_pref,w_pref=read_from_file("input.txt")
+	n,man_pref,w_pref,men,women=read_from_file("input.txt")
 	women_pref=[[] for _ in range(n)]
 	for i in range(n):
 		for j in range(n):
 			m=w_pref[i].index(j)
 			women_pref[i].append(m)
-	return n,man_pref,women_pref
+	return n,man_pref,women_pref,men,women
 def main():
-	n,man_pref,women_pref=pref()
+	n,man_pref,women_pref,men_list,women=pref()
 	wife=[None for _ in range(n)]
 	husband=[None for _ in range(n)]
 	free_men=[i for i in range(n)]
@@ -52,6 +52,6 @@ def main():
 				free_men.append(m)		
 		proposal_count[m]+=1
 	for i in range(n):
-		print("wife: ",i,"husband : ",husband[i])
+		print("wife: ",women[i],"   husband : ",men_list[husband[i]])
 if __name__ == '__main__':
 	main()
