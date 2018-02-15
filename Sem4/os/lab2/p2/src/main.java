@@ -16,18 +16,10 @@ public class main {
     }
     static void delete1(String p)
     {
-//        for(int i=0;i<process.size();i++)
-//        {
-//            if(process.get(i)!=null && process.get(i).name.equals(p))
-//            {
-//                process.set(i,null);
-//                table.remove(p);
-//            }
-//        }
         ArrayList<Integer> temp=table.get(p);
         for(int i=0;i<temp.size();i++)
         {
-            process.set(i,null);
+            process.set(temp.get(i),null);
         }
         table.remove(p);
     }
@@ -46,16 +38,12 @@ public class main {
                     process.get(k).pageno=j;
                     process.get(k).name=name;
                     temp.add(k);
-//                    tail.next=process.get(k);
-//                    tail=process.get(k);
                     break;
                 }
             }
         }
         table.put(name,temp);
     }
-
-
     public static void main(String args[]){
         int processsize[]=new int[]{100,50,210,120};
         for(int i=0;i<10;i++){process.add(i,null);}
@@ -72,5 +60,4 @@ public class main {
         display();
         System.out.println(table);
     }
-
 }
