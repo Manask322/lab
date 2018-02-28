@@ -41,15 +41,13 @@ int kthSmallest(int arr[], int l, int r, int k)
       return kthSmallest(arr, pos+1, r, k-pos+l-1);
     }
 
-}
- 
+} 
 void swap(int *a, int *b)
 {
     int temp = *a;
     *a = *b;
     *b = temp;
-}
- 
+} 
 int partition(int arr[], int l, int r, int x)
 {
     int i;

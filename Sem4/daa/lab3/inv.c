@@ -63,7 +63,7 @@ void sort_inv(int *arr, int l, int r)
 }
 void main()
 {
-    int a[5]={1,2,3,5,4};
+    int a[5]={1,2,7,5,4};
     sort_inv(a,0,5);
     printf("%d",count);
 
