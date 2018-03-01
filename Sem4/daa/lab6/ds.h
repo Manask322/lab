@@ -67,24 +67,24 @@ class ds
         
     }
 };
-int main()
-{   int n=5;
-    ds ds1(n);
-    ds1.union_set(0, 2);
+// int main()
+// {   int n=5;
+//     ds ds1(n);
+//     ds1.union_set(0, 2);
  
         
-        ds1.union_set(4, 2);
+//         ds1.union_set(4, 2);
  
         
-        ds1.union_set(3, 1);
-        if (ds1.find(4) == ds1.find(0))
-            printf("Yes\n");
-        else
-            printf("No\n");
+//         ds1.union_set(3, 1);
+//         if (ds1.find(4) == ds1.find(0))
+//             printf("Yes\n");
+//         else
+//             printf("No\n");
  
-        if (ds1.find(1) == ds1.find(0))
-            printf("Yes\n");
-        else
-            printf("No\n");
-        ds1.printsets();
-}
+//         if (ds1.find(1) == ds1.find(0)   )
+//             printf("Yes\n");
+//         else
+//             printf("No\n");
+//         ds1.printsets();
+// }
