@@ -11,6 +11,10 @@
 #define value(l) ((int)(max/(int)pow(2,l-1)))
 #define neighbour(i)( i%2==0? i-1:i+1)
 int memory[16];
+//-1 free
+//-2 divided
+//-3 non existent
+//>0 occupied
 void delete(int p_id)
 {   
     // for(int k=0;k<16;k++)printf("%d\n",memory[k]);
@@ -62,8 +66,8 @@ void alloc(int process,int p_id)
             while(par>0)
             {
                 if(memory[par]>0)
-                flag=1;
-                break;
+                {flag=1;break;}
+                par=parent(par);
             }
             if(flag==1){continue;}
             else {index=j;memory[index]=p_id;
