@@ -9,7 +9,7 @@ public class node{
     //A constructor
     public node(int processno){
         this.processno=processno;
-        this.pageno=pageno;
+        //this.pageno=pageno;
         this.next=null;
     }
 

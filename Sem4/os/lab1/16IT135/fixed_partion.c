@@ -1,10 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
+//A structure representing a block.
 struct block
 {
-   int size;
-   int is_free;
+   int size;//The block size that is free
+   int is_free;//A flag to indicate if the particular block is free.
 };
+//The functions for allocating the blocks are:
+//1.Best Fit.
+//2.First Fit.
+//3.Worst Fit.
+
+//Allocation for best fit
 void  best_allocate(struct block blocks[],int m,int process[],int n)
 {
   int al_process[n];
@@ -37,6 +44,7 @@ void  best_allocate(struct block blocks[],int m,int process[],int n)
     printf("Process no.:%d  Process size:%d  Block:Not allocated \n",i+1,process[i]);
   }
 }
+//Allocation for first fit
 void first_allocate(struct block blocks[],int m,int process[],int n)
 {
   int al_process[n];
@@ -62,6 +70,7 @@ void first_allocate(struct block blocks[],int m,int process[],int n)
     printf("Process no.:%d  Process size:%d  Block:Not allocated \n",i+1,process[i]);
   }
 }
+//Allocation for worst fit
 void worst_allocate(struct block blocks[],int m,int process[],int n)
 {
    int al_process[n];
@@ -98,6 +107,7 @@ int main()
   printf("How many partitions\n");
   scanf("%d",&n);
   int i;
+ //Making blocks in main memory.
   struct block blocks[n];
   int block_size[n];
   printf("Enter block sizes\n");
@@ -109,6 +119,7 @@ int main()
   printf("How many process you want\n");
   int m;
   scanf("%d",&m);
+  //An array of process sizes.
   int process[m];
   printf("Enter process size\n");
   for(i=0;i<m;i++)
@@ -135,6 +146,7 @@ int main()
       printf("Enter the block you want to free(indexed at 0) if you dont want to free anything enter -1\n");
       int p;
       scanf("%d",&p);
+      //Deleting a block by reducing the block size to its original value.And setting the free flag.		
       if(p!=-1){blocks[p].size=block_size[p];blocks[p].is_free=1;}
       printf("Enter the process size you want to enter");
       int p1[1];
