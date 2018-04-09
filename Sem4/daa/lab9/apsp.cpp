@@ -1,11 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
 int** fw(int** adj_matrix,int n)
-{
+{   int ***pred=(int ***)malloc(n*sizeof(int **));
+    for(int k=0;k<n;k++)
+    {
+        pred[k]=(int **)malloc(n * sizeof(int *));
+        for (int i=0; i<n; i++)
+            pred[k][i] = (int *)malloc(n * sizeof(int));
+    }
     int **prev=adj_matrix;
     int **next= (int **)malloc(n * sizeof(int *));
     for (int i=0; i<n; i++)
          next[i] = (int *)malloc(n * sizeof(int));
+    int **pred_initial= (int **)malloc(n * sizeof(int *));
+    for (int i=0; i<n; i++)
+         pred_initial[i] = (int *)malloc(n * sizeof(int));
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            pred_initial[i][j]=-1;
+        }
+    }
     for(int k=0;k<n;k++)
     {
         for(int i=0;i<n;i++)
@@ -13,9 +29,21 @@ int** fw(int** adj_matrix,int n)
             for(int j=0;j<n;j++)
             {
                 next[i][j]=min(prev[i][k]+prev[k][j],prev[i][j]);
+                if(prev[i][k]+prev[k][j]>prev[i][j])
+                {
+                    pred[k][i][j]=pred[k-1][i][j];
+                }
+                else{
+                    pred[k][i][j]=pred[k-1][k][j];
+                }
             }
         }
         prev=next;
+    }
+    printf("path from 1 to 4\n");
+    for(int k=0;k<n;k++)
+    {
+        printf("%d",pred[k][0][3]);
     }
     return prev;
 }
