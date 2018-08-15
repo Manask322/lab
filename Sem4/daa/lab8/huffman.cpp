@@ -41,6 +41,7 @@ Node huffman(vector<int>freqency,vector<char>symbols)
          Node t1=minHeap.top();
         minHeap.pop();
          Node t2=minHeap.top();
+         minHeap.pop();
         Node parent(&t1,&t2,t1.freq+t2.freq,'-1');
         t1.parent=&parent;
         t2.parent=&parent;
