@@ -3,6 +3,9 @@ reader = csv.reader(open("IRIS.csv"),delimiter=",")
 import random
 from random import shuffle
 from math import exp
+from random import randrange
+
+# import numpy as np
 data=[]
 c=0
 for row in reader:
@@ -33,9 +36,12 @@ for i in range(len(X)):
 for i in range(len(X)):
 	X[i]=[1]+X[i]
 
-
-thresh=0.5
-n_epochs=100
+data=[]
+for i in range(len(X)):
+	data.append(X[i]+[y[i]])
+# print(data)
+thresh=290
+n_epochs=10
 alpha=0.01
 X_train=X[:90]
 X_test=X[90:]
@@ -43,43 +49,40 @@ y_train=y[:90]
 y_test=y[90:]
 
 
-def train(X_train,y_train):
+def train(X_train):
 	global n_epochs,thresh,alpha
 	nf=len(X[0])
 	W=[1/(nf+1) for _ in range(nf)]
-	prev=0
-	mse=999
-	while (abs(prev-mse) > 0.002):
-		error=0
+	for _ in range(n_epochs):
+		# epoch_error=0
 		for te in range(len(X_train)):
 			sum=0
-			for w,x in zip(W,X_train[te]):
+			for w,x in zip(W,X_train[te][:-1]):
 				sum+=w*x
-			pred=1 if 1/(1+exp(-sum))>thresh else 0
-			iter_error=(pred-y_train[te])
-			error+=abs(iter_error)
-			for i in range(len(X_train[te])):
+			pred=1 if sum>=thresh else 0
+			iter_error=(pred-X_train[te][-1])
+			for i in range(len(X_train[te][:-1])):
 				update=alpha*iter_error*X[te][i]
 				W[i]+=update
-		prev=mse
-		mse = float(error/len(X_train))
 	return W
 
-def set_threshold(W,data,y_train):
+
+def set_threshold(W,data):
 	global thresh
 	avg_sum=[]
 	for i in range(len(data)):
 		sum=0
-		for w,x in zip(W,data[i]):
+		for w,x in zip(W,data[i][:-1]):
 			sum+=w*x
 		avg_sum.append(sum)
 	a_sum=0
 	c=0
-	for i in range(len(y_train)):
-		if y_train[i]==0:
+	for i in range(len(data)):
+		if data[i][-1]==0:
 			a_sum+=avg_sum[i]
 			c+=1
 	thresh=a_sum/c
+	# print(thresh)
 
 def predict(W,data):
 	global thresh
@@ -87,10 +90,10 @@ def predict(W,data):
 	avg_sum=[]
 	for i in range(len(data)):
 		sum=0
-		for w,x in zip(W,data[i]):
+		for w,x in zip(W,data[i][:-1]):
 			sum+=w*x
 		avg_sum.append(sum)
-		pred=1 if sum>thresh else 0
+		pred=1 if sum>=thresh else 0
 		y_pred.append(pred)
 	return y_pred,avg_sum
 
@@ -101,16 +104,54 @@ def accuracy_metric(actual, predicted):
 			correct += 1
 	return correct / float(len(actual)) * 100.0
 
+def cross_validation_split(dataset, n_folds):
+	dataset_split = list()
+	dataset_copy = list(dataset)
+	fold_size = int(len(dataset) / n_folds)
+	for _ in range(n_folds):
+		fold = list()
+		while len(fold) < fold_size:
+			index = randrange(len(dataset_copy))
+			fold.append(dataset_copy.pop(index))
+		dataset_split.append(fold)
+	return dataset_split
 
-W=train(X_train,y_train)
+def evaluate_algorithm(dataset, n_folds):
+	folds = cross_validation_split(dataset, n_folds)
+	scores = list()
+	f=1
+	for fold in folds:
+		train_set = list(folds)
+		train_set.remove(fold)
+		train_set = sum(train_set, [])
+		test_set = list()
+		actual=[]
+		for row in fold:
+			row_copy = list(row)
+			test_set.append(row_copy)
+			actual.append(row[-1])
+		W=train(train_set)
+		set_threshold(W,train_set)
+		predicted ,_= predict(W,test_set)
+		print(" Fold ",f)
+		print("predicted :",predicted)
+		print("actual :",actual)
+		accuracy = accuracy_metric(actual, predicted)
+		scores.append(accuracy)
+		f+=1
+	return scores
+print(evaluate_algorithm(data,10))
 
 # set_threshold(W,X_train,y_train)
 
-y_pred,avg_sum=predict(W,X_train)
+# y_pred,avg_sum=predict(W,X_train)
+# print(y_pred)
+# print("Weights")
+# print(W)
 
 
-print("Train accuaracy: ",accuracy_metric(y_train,y_pred))
+# print("Train accuaracy: ",accuracy_metric(y_train,y_pred))
 
-y_pred_test,_=predict(W,X_test)
+# y_pred_test,_=predict(W,X_test)
 
-print("Test accuracy : ",accuracy_metric(y_test,y_pred_test))
+# print("Test accuracy : ",accuracy_metric(y_test,y_pred_test))
