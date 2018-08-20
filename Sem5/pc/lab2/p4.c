@@ -15,7 +15,7 @@ void main()
 		for(j=0;j<n;j++)
 		{
 			a[i][j]=i+j;
-			printf("a[%d][%d] is %d\n",i,j,a[i][j]);
+			printf("thread : %d a[%d][%d] is %d\n",id,i,j,a[i][j]);
 		}
 	}
 	t2=omp_get_wtime();
