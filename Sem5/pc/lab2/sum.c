@@ -10,8 +10,8 @@ void main()
 	#pragma omp parallel
 	{
 		int id=omp_get_thread_num();
-		#pragma omp for lastprivate(i)
-		for(int i=0;i<n;i++)
+		#pragma omp for
+		for(i=0;i<n;i++)
 		{
 			printf("Thread %d : value of i: %d\n",id,i);
 			x+=a[i];
