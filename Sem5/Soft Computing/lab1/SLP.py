@@ -43,10 +43,10 @@ for i in range(len(X)):
 thresh=0.6
 n_epochs=10
 alpha=0.01
-X_train=X[:90]
-X_test=X[90:]
-y_train=y[:90]
-y_test=y[90:]
+# X_train=X[:90]
+# X_test=X[90:]
+# y_train=y[:90]
+# y_test=y[90:]
 
 
 def train(train):
