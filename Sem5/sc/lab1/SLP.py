@@ -1,9 +1,12 @@
 import csv
 import random
 from random import shuffle
-from math import exp
 from random import randrange
-
+# import sys
+# sys.path.append('/usr/home/shreyas/lab/Sem5/sc/mypackage')
+# import mypackage
+# u=mypackage.util()
+# print(util)
 
 def get_data(file,y_in):
 	reader = csv.reader(open(file),delimiter=",")
