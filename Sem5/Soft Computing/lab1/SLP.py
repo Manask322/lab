@@ -1,57 +1,54 @@
 import csv
-reader = csv.reader(open("IRIS.csv"),delimiter=",")
 import random
 from random import shuffle
 from math import exp
 from random import randrange
 
 
-data=[]
-c=0
-for row in reader:
-	if(c==0):
-		c+=1
-		continue
-	data.append(row)
-random.seed(123)
-shuffle(data)
-
-X=[]
-y=[]
-c=0
-for row in data:
-	X.append(row[:-1])
-	y.append(row[-1])
-
-
-unique=[]
-for i in range(len(y)):
-	if y[i] not in unique:
-		unique.append(y[i])
-for i in range(len(y)):
-	y[i]=unique.index(y[i])
-for i in range(len(X)):
-	for j in range(len(X[0])):
-		X[i][j]=float(X[i][j])
-for i in range(len(X)):
-	X[i]=[1]+X[i]
-
-data=[]
-for i in range(len(X)):
-	data.append(X[i]+[y[i]])
+def get_data(file,y_in):
+	reader = csv.reader(open(file),delimiter=",")
+	data=[]
+	c=0
+	for row in reader:
+		if(c==0):
+			c+=1
+			continue
+		data.append(row)
+	random.seed(123)
+	shuffle(data)
+	for item in data:
+		item[-1], item[y_in] = item[y_in], item[-1]
+	
+	X=[]
+	y=[]
+	c=0
+	# print(data)
+	for row in data:
+		X.append(row[:-1])
+		y.append(row[-1])
+	unique=[]
+	for i in range(len(y)):
+		if y[i] not in unique:
+			unique.append(y[i])
+	for i in range(len(y)):
+		y[i]=unique.index(y[i])
+	for i in range(len(X)):
+		for j in range(len(X[0])):
+			X[i][j]=float(X[i][j])
+	for i in range(len(X)):
+		X[i]=[1]+X[i]
+	data=[]
+	for i in range(len(X)):
+		data.append(X[i]+[y[i]])
+	return data
 
 thresh=0.6
 n_epochs=10
 alpha=0.01
-# X_train=X[:90]
-# X_test=X[90:]
-# y_train=y[:90]
-# y_test=y[90:]
-
 
 def train(train):
 	global n_epochs,thresh,alpha
-	nf=len(X[0])
+	nf=len(train[0])-1
 	W=[1/(nf+1) for _ in range(nf)]
 	for _ in range(n_epochs):
 		for te in range(len(train)):
@@ -115,6 +112,27 @@ def cross_validation_split(dataset, n_folds):
 		dataset_split.append(fold)
 	return dataset_split
 
+def confusion_matrix(y,y_pred):
+	tp=0
+	fp=0
+	fn=0
+	tn=0
+	for i,j in zip(y,y_pred):
+		if i==0:
+			if j==0:
+				tn+=1
+			else:
+				fp+=1
+		elif i==1:
+			if j==1:
+				tp+=1
+			else:
+				fn+=1
+	precision=tp/(tp+fp)
+	recall=tp/(tp+fn)
+	return precision,recall
+
+
 def evaluate_algorithm(dataset, n_folds):
 	folds = cross_validation_split(dataset, n_folds)
 	scores = list()
@@ -130,13 +148,23 @@ def evaluate_algorithm(dataset, n_folds):
 			test_set.append(row_copy)
 			actual.append(row[-1])
 		W=train(train_set)
-		# set_threshold(W,train_set)
 		predicted ,_= predict(W,test_set)
-		print(" Fold ",f)
+		print("FOLD ",f)
 		print("predicted :",predicted)
 		print("actual :",actual)
 		accuracy = accuracy_metric(actual, predicted)
-		scores.append(accuracy)
+		precision,recall=confusion_matrix(actual,predicted)
+		print("accuracy :"+str(accuracy))
+		print("precision :"+str(precision))
+		print("recall :"+str(recall))
+		print("-"*90)
+		scores.append(["accuracy :"+str(accuracy),"precision :"+str(precision),"recall :"+str(recall)])
 		f+=1
-	return scores
-print(evaluate_algorithm(data,10))
+
+data=get_data("../datasets/IRIS.csv",-1)
+print("For IRIS data:")
+evaluate_algorithm(data,10)
+print("="*90)
+data=get_data("../datasets/SPECT.csv",0)
+print("For SPECT data:")
+evaluate_algorithm(data,10)
