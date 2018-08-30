@@ -1,0 +1,42 @@
+<meta charset="utf-8"/>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	
+</head>
+<body>
+	<form id="myform">
+	      Name:
+		  <input type="text" name="firstname">
+		  City: 
+		  <input type="text" name="initials"><br>
+		  Gender:
+		  <input type="text" name="surname"> <br><br>
+		   <h3>Comments</h3>
+		   <textarea rows="10" cols="30">Write something!
+		   </textarea><br>
+		   <input type="reset" value="Reset">
+		    <input type="button" onclick="myfunc()" value="submit"></input> 
+	</form>
+	<p id="mypara"></p>
+	<script type="text/javascript">
+		console.log("dsfsdf");
+		function myfunc()
+		{
+			var x=document.getElementById("myform").elements[0].value;
+			// console.log(x);
+			var string="name :"
+			string=string+x;
+			x=document.getElementById("myform").elements[1].value;
+			string=string+"<br/> City :"+x;
+			x=document.getElementById("myform").elements[2].value;
+			string=string+"<br/> Gender :"+x;
+			x=document.getElementById("myform").elements[3].value;
+			string=string+"<br/> Comments :"+x;
+			document.getElementById("mypara").innerHTML=string;
+			// console.log(x);
+		}
+	</script>
+</body>
+</html>
