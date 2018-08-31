@@ -1,0 +1,28 @@
+insert into nurse(employeeid,name,position,registered,ssn) values
+(101,'Carla Espinosa','Head Nurse','t',111111110),
+(102,'Laverne Roberts','Nurse','t',222222220),
+(103,'Paul Flowers','Nurse','f',333333330);
+
+insert into physician(employeeid,name,position,ssn) values
+(1,'John Dorian','Staff Internist',111111111),
+(2,'Elliot Reid','Attending Physician',222222222),
+(3,'Christopher Turk','Surgical Attending Physician',333333333),
+(4,'Percival Cox','Senior Attending Physician',444444444),
+(5,'Bob Kelso','Head Chief of Medicine',555555555),
+(6,'Todd Quinlan','Surgical Attending Physician',666666666),
+(7,'John Wen','Surgical Attending Physician',777777777),
+(8,'Keith Dudemeister','MD Resident',888888888),
+(9,'Molly Clock','Attending Psychiatrist',999999999);
+
+
+insert into department(departmentid,name,head) values
+(1,'General Medicine',4),
+(2,'Surgery',7),
+(3,'Psychiatry',9);
+
+
+insert into appointment(appointmentid,patient,prepnurse,physician,start_dt_time,end_dt_time,examinationroom) values 
+(13216584,100000001,101,1,2008-04-24 10:00:00,2008-04-24 11:00:00,A),
+(59871321,100000004,4,2008-04-26 10:00:00,2008-04-26 11:00:00,C),
+(69879231,100000003,103,2,2008-04-26 11:00:00,2008-04-26 12:00:00,C),
+(76983231,100000001,3, 2008-04-26 12:00:00,2008-04-26 13:00:00,C);
