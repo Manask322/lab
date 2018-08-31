@@ -2,13 +2,14 @@ import csv
 import random
 from random import shuffle
 from random import randrange
-# import sys
-# sys.path.append('/usr/home/shreyas/lab/Sem5/sc/mypackage')
-# import mypackage
-# u=mypackage.util()
-# print(util)
+import sys
+sys.path.insert(0,'../mypackage')
+from  mypackage.util import util
 
-def get_data(file,y_in):
+u=util()
+
+
+def get_data1(file,y_in):
 	reader = csv.reader(open(file),delimiter=",")
 	data=[]
 	c=0
@@ -25,7 +26,7 @@ def get_data(file,y_in):
 	X=[]
 	y=[]
 	c=0
-	# print(data)
+	
 	for row in data:
 		X.append(row[:-1])
 		y.append(row[-1])
@@ -96,7 +97,7 @@ def predict(W,data):
 		y_pred.append(pred)
 	return y_pred,avg_sum
 
-def accuracy_metric(actual, predicted):
+def accuracy_metric1(actual, predicted):
 	correct = 0
 	for i in range(len(actual)):
 		if actual[i] == predicted[i]:
@@ -115,7 +116,7 @@ def cross_validation_split(dataset, n_folds):
 		dataset_split.append(fold)
 	return dataset_split
 
-def confusion_matrix(y,y_pred):
+def confusion_matrix1(y,y_pred):
 	tp=0
 	fp=0
 	fn=0
@@ -155,8 +156,8 @@ def evaluate_algorithm(dataset, n_folds):
 		print("FOLD ",f)
 		print("predicted :",predicted)
 		print("actual :",actual)
-		accuracy = accuracy_metric(actual, predicted)
-		precision,recall=confusion_matrix(actual,predicted)
+		accuracy = u.accuracy_metric(actual, predicted)
+		precision,recall=u.confusion_matrix(actual,predicted)
 		print("accuracy :"+str(accuracy))
 		print("precision :"+str(precision))
 		print("recall :"+str(recall))
@@ -164,10 +165,10 @@ def evaluate_algorithm(dataset, n_folds):
 		scores.append(["accuracy :"+str(accuracy),"precision :"+str(precision),"recall :"+str(recall)])
 		f+=1
 
-data=get_data("../datasets/IRIS.csv",-1)
+data=u.get_data("../datasets/IRIS.csv",-1)
 print("For IRIS data:")
 evaluate_algorithm(data,10)
 print("="*90)
-data=get_data("../datasets/SPECT.csv",0)
+data=u.get_data("../datasets/SPECT.csv",0)
 print("For SPECT data:")
 evaluate_algorithm(data,10)

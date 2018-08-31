@@ -3,50 +3,10 @@ import random
 from random import shuffle
 from math import exp
 from random import randrange
-
-def get_data(file,y_in):
-	reader = csv.reader(open(file),delimiter=",")
-	data=[]
-	c=0
-	for row in reader:
-		if(c==0):
-			c+=1
-			continue
-		data.append(row)
-	random.seed(123)
-	shuffle(data)
-	for item in data:
-		item[-1], item[y_in] = item[y_in], item[-1]
-	X=[]
-	y=[]
-	for row in data:
-		X.append(row[:-1])
-		y.append(row[-1])
-	unique=[]
-	for i in range(len(y)):
-		if y[i] not in unique:
-			unique.append(y[i])
-	for i in range(len(y)):
-		y[i]=unique.index(y[i])
-	for i in range(len(X)):
-		for j in range(len(X[0])):
-			X[i][j]=float(X[i][j])
-	for i in range(len(X)):
-		X[i]=[1]+X[i]
-	data=[]
-	for i in range(len(X)):
-		data.append(X[i]+[y[i]])
-	return data
-
 import numpy as np
 import pandas as pd
 
-def unit(W,x):
-    sum=0
-    for i,j in zip(W,x):
-        sum+=i*j
-    output=1/(1+exp(sum))
-    return output
+
 
 def layer_sizes(X, Y):
     n_x =X.shape[0]
@@ -98,13 +58,12 @@ def forward_propagation(X, parameters):
 def compute_cost(A2, Y, parameters):
     m = Y.shape[1] 
     logprobs = np.multiply(np.log(A2),Y)+np.multiply(np.log(1-A2),1-Y)
-    cost = -np.sum(logprobs)/m
+    cost = -1*np.sum(logprobs)/m
     cost = np.squeeze(cost)    
     return cost
 
 def backward_propagation(parameters, cache, X, Y):
     m = X.shape[1]
-    W1 = parameters["W1"]
     W2 = parameters["W2"]
     A1 = cache["A1"]
     A2 = cache["A2"]
@@ -154,10 +113,6 @@ def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=True):
     n_y = layer_sizes(X, Y)[2]
  
     parameters = initialize_parameters(n_x,n_h,n_y)
-    W1 = parameters["W1"]
-    b1 = parameters["b1"]
-    W2 = parameters["W2"]
-    b2 = parameters["b2"]
   
     for i in range(0, num_iterations):
         A2, cache = forward_propagation(X,parameters)
@@ -173,13 +128,13 @@ def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=True):
     return parameters
 
 def predict(parameters, X): 
-    A2, cache = forward_propagation(X,parameters)
+    A2,_ = forward_propagation(X,parameters)
     predictions=[1 if A2[0][i]>0.5 else 0   for i in range(A2.shape[1])] 
     return predictions
 
 data=pd.read_csv("../datasets/SPECT.csv",delimiter=",")
 
-data = data.sample(frac=1).reset_index(drop=True)
+data = data.sample(frac=1,random_state=123).reset_index(drop=True)
 
 X=data.drop(['Class'],axis=1)
 y=data['Class'].replace(['Yes','No'],[1,0])
