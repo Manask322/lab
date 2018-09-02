@@ -26,3 +26,47 @@ insert into appointment(appointmentid,patient,prepnurse,physician,start_dt_time,
 (59871321,100000004,4,2008-04-26 10:00:00,2008-04-26 11:00:00,C),
 (69879231,100000003,103,2,2008-04-26 11:00:00,2008-04-26 12:00:00,C),
 (76983231,100000001,3, 2008-04-26 12:00:00,2008-04-26 13:00:00,C);
+------------------------------------------------------------------------------------------
+
+select * from nurse where registered='1';
+select physician.name from physician inner join department on physician.employeeid=department.head;
+select room.blockfloor,room.blockcode from room where room.roomnumber=212;
+select count(roomnumber) from room where room.unvailable='f';
+select distinct patient.name from patient inner join appointment on patient.ssn=appointment.patient;
+
+SELECT p.name "Patient",
+       count(t.patient) "Appointment for No. of Physicians"
+FROM appointment t
+JOIN patient p ON t.patient=p.ssn
+GROUP BY p.name
+HAVING count(t.patient)>=1;
+
+select nurse.name,appointment.examinationroom from appointment join nurse on nurse.employeeid=appointment.prepnurse ;
+
+SELECT t.name AS "Name of the patient",
+       n.name AS "Name of the Nurse assisting the physician",
+       p.name AS "Name of the physician",
+       a.examinationroom AS "Room No.",
+       a.start_dt_time
+FROM patient t
+JOIN appointment a ON a.patient=t.ssn
+JOIN nurse n ON a.prepnurse=n.employeeid
+JOIN physician p ON a.physician=p.employeeid
+WHERE start_dt_time='2008-04-25 10:00:00';
+
+SELECT t.name AS "Name of the patient",
+       p.name AS "Name of the physician"
+FROM patient t
+JOIN appointment a ON a.patient=t.ssn
+JOIN physician p ON a.physician=p.employeeid
+WHERE a.prepnurse IS NULL;
+
+SELECT room.blockfloor AS "Floor",
+       room.blockcode AS "Block",
+       count(*) "Number of available rooms"
+FROM room
+WHERE room.unvailable='false'
+GROUP BY blockfloor,
+        blockcode
+ORDER BY blockfloor,
+        blockcode;
