@@ -86,7 +86,7 @@ def backward_propagation(parameters, cache, X, Y):
     
     return grads
 
-def update_parameters(parameters, grads, learning_rate = 1.2):
+def update_parameters(parameters, grads, learning_rate =0.1):
 
     W1 = parameters["W1"]
     b1 = parameters["b1"]
@@ -110,29 +110,29 @@ def update_parameters(parameters, grads, learning_rate = 1.2):
     
     return parameters
 
-def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False):
+def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False,lr=0.1):
     np.random.seed(3)
     n_x = layer_sizes(X, Y)[0]
     n_y = layer_sizes(X, Y)[2]
  
     parameters = initialize_parameters(n_x,n_h,n_y)
   
-    for i in range(0, num_iterations):
-        A2, cache = forward_propagation(X,parameters)
-        cost = compute_cost(A2,Y,parameters)
+    for _ in range(0, num_iterations):
+        _, cache = forward_propagation(X,parameters)
+        # cost = compute_cost(A2,Y,parameters)
  
         grads = backward_propagation(parameters,cache,X,Y)
  
-        parameters = update_parameters(parameters,grads)
+        parameters = update_parameters(parameters,grads,lr)
         
         # Print the cost every 1000 iterations
-        if print_cost and i % 1000 == 0:
-            print ("Cost after iteration %i: %f" %(i, cost))
+        # if print_cost and i % 1000 == 0:
+        #     print ("Cost after iteration %i: %f" %(i, cost))
     return parameters
 
 def predict(parameters, X): 
     A2,_ = forward_propagation(X,parameters)
-    predictions=[1 if A2[0][i]>0.5 else 0   for i in range(A2.shape[1])] 
+    predictions=[1 if A2[0][i]>0.6 else 0   for i in range(A2.shape[1])] 
     return predictions
 
 # def preprocess_data(file,label):
@@ -178,6 +178,7 @@ def confusion_matrix(y,y_pred):
                 tp+=1
             else:
                 fn+=1
+    print("tp:",tp,"len: ",len(y))
     try:
         precision=tp/(tp+fp)
         recall=tp/(tp+fn)
@@ -197,7 +198,7 @@ def cross_validation_split(dataset, n_folds):
 		dataset_split.append(fold)
 	return dataset_split
 
-def evaluate_algorithm(dataset, n_folds):
+def evaluate_algorithm(dataset, n_folds,lr=0.1):
         folds = cross_validation_split(dataset, n_folds)
         scores = list()
         f=1
@@ -217,7 +218,7 @@ def evaluate_algorithm(dataset, n_folds):
             test=np.array(test_set)
             X_test=test[:,:test.shape[1]-1].T
             actual=test[:,-1].reshape(1,test.shape[0])
-            parameters=nn_model(X_train,y_train,5)
+            parameters=nn_model(X_train,y_train,5,lr=lr)
             predicted = predict(parameters,X_test)
             print("FOLD ",f)
             print("predicted :",predicted)
@@ -275,7 +276,7 @@ evaluate_algorithm(iris,10)
 print("="*100)
 print("For SPECT dataset")
 scept=get_data("SPECT.csv",0)
-evaluate_algorithm(scept,10)
+evaluate_algorithm(scept,10,0.95)
 
 
 # X_train,y_train,X_test,y_test=preprocess_data("SPECT.csv",'Class')
