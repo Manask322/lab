@@ -110,7 +110,7 @@ def update_parameters(parameters, grads, learning_rate =0.1):
     
     return parameters
 
-def nn_model(X, Y, n_h, num_iterations = 10000, print_cost=False,lr=0.1):
+def nn_model(X, Y, n_h, num_iterations = 1000, print_cost=False,lr=0.1):
     np.random.seed(3)
     n_x = layer_sizes(X, Y)[0]
     n_y = layer_sizes(X, Y)[2]
