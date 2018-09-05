@@ -222,7 +222,7 @@ def evaluate_algorithm(dataset, n_folds,lr=0.1):
             predicted = predict(parameters,X_test)
             print("FOLD ",f)
             print("predicted :",predicted)
-            print("actual :",actual)
+            print("actual :   ",actual[0])
             accuracy = accuracy_metric(actual.reshape(-1,1), predicted)
             precision,recall=confusion_matrix(actual.reshape(-1,1),predicted)
             print("accuracy :"+str(accuracy))
@@ -276,7 +276,7 @@ evaluate_algorithm(iris,10)
 print("="*100)
 print("For SPECT dataset")
 scept=get_data("SPECT.csv",0)
-evaluate_algorithm(scept,10,0.95)
+evaluate_algorithm(scept,10,0.1)
 
 
 # X_train,y_train,X_test,y_test=preprocess_data("SPECT.csv",'Class')
