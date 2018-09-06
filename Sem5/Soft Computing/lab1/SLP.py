@@ -138,6 +138,9 @@ def evaluate_algorithm(dataset, n_folds):
 	folds = cross_validation_split(dataset, n_folds)
 	scores = list()
 	f=1
+	average_acc=0
+    average_prec=0
+    average_recall=0
 	for fold in folds:
 		train_set = list(folds)
 		train_set.remove(fold)
@@ -155,12 +158,19 @@ def evaluate_algorithm(dataset, n_folds):
 		print("actual :",actual)
 		accuracy = accuracy_metric(actual, predicted)
 		precision,recall=confusion_matrix(actual,predicted)
+		average_acc+=accuracy
+		average_prec+=precision
+		average_recall+=recall
 		print("accuracy :"+str(accuracy))
 		print("precision :"+str(precision))
 		print("recall :"+str(recall))
 		print("-"*90)
 		scores.append(["accuracy :"+str(accuracy),"precision :"+str(precision),"recall :"+str(recall)])
 		f+=1
+	print("average accuracy :",average_acc/n_folds)
+    print("average precision :",average_prec/n_folds)
+    print("average recall :",average_recall/n_folds)
+
 
 data=get_data("../datasets/IRIS.csv",-1)
 print("For IRIS data:")

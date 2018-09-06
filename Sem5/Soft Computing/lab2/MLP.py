@@ -202,6 +202,9 @@ def evaluate_algorithm(dataset, n_folds,lr=0.1):
         folds = cross_validation_split(dataset, n_folds)
         scores = list()
         f=1
+        average_acc=0
+        average_prec=0
+        average_recall=0
         for fold in folds:
             train_set = list(folds)
             train_set.remove(fold)
@@ -225,12 +228,19 @@ def evaluate_algorithm(dataset, n_folds,lr=0.1):
             print("actual :   ",actual[0])
             accuracy = accuracy_metric(actual.reshape(-1,1), predicted)
             precision,recall=confusion_matrix(actual.reshape(-1,1),predicted)
+            average_acc+=accuracy
+            average_prec+=precision
+            average_recall+=recall
             print("accuracy :"+str(accuracy))
             print("precision :"+str(precision))
             print("recall :"+str(recall))
             print("-"*90)
             scores.append(["accuracy :"+str(accuracy),"precision :"+str(precision),"recall :"+str(recall)])
             f+=1
+        print("average accuracy :",average_acc/n_folds)
+        print("average precision :",average_prec/n_folds)
+        print("average recall :",average_recall/n_folds)
+
 
 def get_data(file,y_in):
 	reader = csv.reader(open("../datasets/"+file),delimiter=",")
