@@ -139,8 +139,8 @@ def evaluate_algorithm(dataset, n_folds):
 	scores = list()
 	f=1
 	average_acc=0
-    average_prec=0
-    average_recall=0
+	average_prec=0
+	average_recall=0
 	for fold in folds:
 		train_set = list(folds)
 		train_set.remove(fold)
@@ -168,8 +168,8 @@ def evaluate_algorithm(dataset, n_folds):
 		scores.append(["accuracy :"+str(accuracy),"precision :"+str(precision),"recall :"+str(recall)])
 		f+=1
 	print("average accuracy :",average_acc/n_folds)
-    print("average precision :",average_prec/n_folds)
-    print("average recall :",average_recall/n_folds)
+	print("average precision :",average_prec/n_folds)
+	print("average recall :",average_recall/n_folds)
 
 
 data=get_data("../datasets/IRIS.csv",-1)
