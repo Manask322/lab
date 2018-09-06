@@ -2,6 +2,7 @@ import csv
 import random
 from random import shuffle
 from random import randrange
+random.seed(2018)
 
 def get_data(file,y_in,bias=False):
     reader = csv.reader(open("../datasets/"+file),delimiter=",")
@@ -12,7 +13,6 @@ def get_data(file,y_in,bias=False):
             c+=1
             continue
         data.append(row)
-    random.seed(123)
     shuffle(data)
     for item in data:
         item[-1], item[y_in] = item[y_in], item[-1]
@@ -53,7 +53,10 @@ def seperate_classes(data):
 
 def attribute_proba(classes,data):
     n_f=len(data[0])-1
+    prob_class=[None for _ in range(len(classes))]
     summary={}
+    i=0
+    tot=0
     for classes,indices in classes.items():
         temp=[{} for _ in range(n_f)]
         for ind in indices:
@@ -66,7 +69,12 @@ def attribute_proba(classes,data):
             for k,v in t.items():
                 t[k]=v/len(indices)
         summary[classes]=temp
-    return summary
+        prob_class[i]=len(indices)
+        tot+=len(indices)
+        i+=1
+    for i in range(len(prob_class)):
+        prob_class[i]/=tot
+    return summary,prob_class
 
 def maxi(vec):
     max=-1
@@ -76,8 +84,8 @@ def maxi(vec):
             max_i=i
     return max_i
 
-def predict(te,summary):
-    prob=[1 for _ in range(len(summary))]
+def predict(te,summary,prob_class):
+    prob=[prob_class[i] for i in range(len(summary))]
     max=-1
     for i in range(len(prob)):
         for attr in range(len(te)-1):
@@ -90,10 +98,10 @@ def predict(te,summary):
             maxi=i
     return maxi
 
-def predict_all(data,summary):
+def predict_all(data,summary,prob_class):
     pred=[]
     for te in data:
-        pred.append(predict(te,summary))
+        pred.append(predict(te,summary,prob_class))
     return pred
 
 def get_proba(data):
@@ -101,16 +109,16 @@ def get_proba(data):
     return attribute_proba(classes,data)
 
 def cross_validation_split(dataset, n_folds):
-	dataset_split = list()
-	dataset_copy = list(dataset)
-	fold_size = int(len(dataset) / n_folds)
-	for _ in range(n_folds):
-		fold = list()
-		while len(fold) < fold_size:
-			index = randrange(len(dataset_copy))
-			fold.append(dataset_copy.pop(index))
-		dataset_split.append(fold)
-	return dataset_split
+    dataset_split = list()
+    dataset_copy = list(dataset)
+    fold_size = int(len(dataset) / n_folds)
+    for _ in range(n_folds):
+        fold = list()
+        while len(fold) < fold_size:
+            index = randrange(len(dataset_copy))
+            fold.append(dataset_copy.pop(index))
+        dataset_split.append(fold)
+    return dataset_split
 
 def accuracy_metric(actual, predicted):
 	correct = 0
@@ -142,7 +150,6 @@ def confusion_matrix(y,y_pred):
 def evaluate_algorithm(dataset, n_folds):
     folds = cross_validation_split(dataset, n_folds)
     scores = list()
-    # print(len(dataset))
     f=1
     average_acc=0
     average_prec=0
@@ -157,11 +164,8 @@ def evaluate_algorithm(dataset, n_folds):
             row_copy = list(row)
             test_set.append(row_copy)
             actual.append(row[-1])
-        # print(train_set)
-        summary=get_proba(train_set)
-        # print(summary)
-        # print(len(test_set[0]))
-        predicted = predict_all(test_set,summary)
+        summary,prob_class=get_proba(train_set)
+        predicted = predict_all(test_set,summary,prob_class)
         print("FOLD ",f)
         print("predicted :",predicted)
         print("actual :",actual)
@@ -182,4 +186,4 @@ def evaluate_algorithm(dataset, n_folds):
 
     
 data=get_data("SPECT.csv",0)
-evaluate_algorithm(data,20)
+evaluate_algorithm(data,10)
