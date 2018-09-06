@@ -6,7 +6,7 @@
 	
 </head>
 <body>
-	<form id="myform">
+	<form id="myform" name="form_name">
 	      Name:
 		  <input type="text" name="firstname">
 		  City: 
@@ -17,24 +17,26 @@
 		   <textarea rows="10" cols="30">Write something!
 		   </textarea><br>
 		   <input type="reset" value="Reset">
-		    <input type="button" onclick="myfunc()" value="submit"></input> 
+		    <input type="button" onclick="myfunc()" value="submit">
 	</form>
 	<p id="mypara"></p>
 	<script type="text/javascript">
-		console.log("dsfsdf");
+	
 		function myfunc()
 		{
 			var x=document.getElementById("myform").elements[0].value;
 			// console.log(x);
 			var string="name :"
 			string=string+x;
-			x=document.getElementById("myform").elements[1].value;
+			x=document.form_name.initials.value;
+			console.log(x);	
 			string=string+"<br/> City :"+x;
 			x=document.getElementById("myform").elements[2].value;
 			string=string+"<br/> Gender :"+x;
 			x=document.getElementById("myform").elements[3].value;
 			string=string+"<br/> Comments :"+x;
 			document.getElementById("mypara").innerHTML=string;
+
 			// console.log(x);
 		}
 	</script>

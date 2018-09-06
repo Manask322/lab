@@ -1,0 +1,82 @@
+<meta charset="utf-8"/>
+<!DOCTYPE html>
+<head>
+<title>Form DOM</title>
+
+<script>
+function validate()
+{   
+	if(document.myform.fn.value=="")
+	{
+		alert("Enter proper first name!");
+		document.myform.fn.focus();
+		return false;
+	}
+	if(document.myform.ln.value=="")
+	{
+		alert("Enter proper last name!");
+		document.myform.ln.focus();
+		return false;
+	}
+	var email=document.myform.e.value;
+	at=email.indexOf('@');
+	dot=email.lastIndexOf('.');
+	if(at<1||(dot-at<2))
+	{
+		alert("Enter valid email!");
+		document.myform.e.focus;
+		return false;
+	}
+	var radioVals=document.getElementsByName("gender");
+	var i=0,selected=false;
+	while(!selected&&i<radioVals.length)
+	{
+		if(radioVals[i].checked)selected=true;
+		i++;
+	}
+	if(!selected)
+	{
+		alert("Enter some gender!");
+	}
+	if(selected)
+	{
+		alert('success');
+	}
+	return selected;
+}
+</script>
+</head>
+
+<body>
+
+<form name="myform" >
+<table>
+<tr>
+<td>First Name*</td>
+<td><input type="text" name="fn" maxlength="20"></td>
+</tr>
+<tr>
+<td>Last Name*</td>
+<td><input type="text" name="ln" maxlength="20"></td>
+</tr>
+<tr>
+<td>Email*</td>
+<td><input type="email" name="e"></td>
+</tr>
+<tr><td>Gender*</td></tr>
+<tr>
+<td>Male<input type="radio" name="gender"></td>
+<td>Female<input type="radio" name="gender"></td>
+</tr>
+<tr>
+<td>Comments</td>
+<td><textarea name="comm"></textarea></td>
+</tr>
+<tr>
+		
+<td><input type="button" value="Check" onclick="validate()"></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

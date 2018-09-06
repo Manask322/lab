@@ -1,0 +1,42 @@
+<meta charset="utf-8"/>
+<html>
+    <head>
+        <script>
+            console.log("hello");
+            var images = ['course1.jpg', 'id1.JPG', 'NSS.jpg','TeachersDayGrtg.jpg','vpa1.jpg'];
+            var index = 0;
+            var the_image = document.getElementById("main-image");
+
+            function show_image(direction)
+            {
+            if (direction == "left")
+            {
+                index--;
+            }
+            else
+            {
+                index++;
+                index %= images.length;
+            }
+            
+            if (index < 0)
+            {
+                index = images.length - 1;
+            }
+            document.getElementById("main-image").src= images[index];
+            }
+                    </script>
+    </head>
+<body>
+        <div>
+                <button onclick="show_image('left')">&lt;</button>
+                <button onclick="show_image('right')">&gt;</button>
+              </div>
+              
+              <div>
+                <img id="main-image" src="course1.jpg"/>
+              </div>
+              
+</body>
+
+</html>
