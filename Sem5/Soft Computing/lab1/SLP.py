@@ -6,7 +6,7 @@ import sys
 
 
 
-def get_data(file,y_in):
+def get_data(file,y_in,flag=0):
 	reader = csv.reader(open(file),delimiter=",")
 	data=[]
 	c=0
@@ -16,7 +16,7 @@ def get_data(file,y_in):
 			continue
 		data.append(row)
 	random.seed(123)
-	shuffle(data)
+	# shuffle(data)
 	for item in data:
 		item[-1], item[y_in] = item[y_in], item[-1]
 	
@@ -32,7 +32,10 @@ def get_data(file,y_in):
 		if y[i] not in unique:
 			unique.append(y[i])
 	for i in range(len(y)):
-		y[i]=unique.index(y[i])
+		if flag:
+			y[i]=1-unique.index(y[i])
+		else :
+			y[i]=unique.index(y[i])
 	for i in range(len(X)):
 		for j in range(len(X[0])):
 			X[i][j]=float(X[i][j])
@@ -176,6 +179,6 @@ data=get_data("../datasets/IRIS.csv",-1)
 print("For IRIS data:")
 evaluate_algorithm(data,10)
 print("="*90)
-data=get_data("../datasets/SPECT.csv",0)
+data=get_data("../datasets/SPECT.csv",0,1)
 print("For SPECT data:")
 evaluate_algorithm(data,10)

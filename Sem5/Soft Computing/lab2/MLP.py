@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 
-
+is_scept=False
 def layer_sizes(X, Y):
     n_x =X.shape[0]
     n_h = 5
@@ -38,15 +38,17 @@ def initialize_parameters(n_x, n_h, n_y):
 def sigmoid(X):
     return 1/(1+np.exp(-X))
 
-def forward_propagation(X, parameters):
+def forward_propagation(X, parameters,flag=1):
     W1 = parameters["W1"]
     b1 = parameters["b1"]
     W2 = parameters["W2"]
     b2 = parameters["b2"]
    
     Z1 = np.dot(W1,X)+b1
-
-    A1 = np.tanh(Z1)
+    if is_scept:
+        A1=sigmoid(Z1)
+    else:
+        A1 = np.tanh(Z1)
     Z2 = np.dot(W2,A1)+b2
     A2 = sigmoid(Z2)
     # print(A2.shape)
@@ -226,66 +228,54 @@ def evaluate_algorithm(dataset, n_folds,lr=0.1):
         print("average recall :",average_recall/n_folds)
 
 
-def get_data(file,y_in):
-	reader = csv.reader(open("../datasets/"+file),delimiter=",")
-	data=[]
-	c=0
-	for row in reader:
-		if(c==0):
-			c+=1
-			continue
-		data.append(row)
-	random.seed(123)
-	shuffle(data)
-	for item in data:
-		item[-1], item[y_in] = item[y_in], item[-1]
-	
-	X=[]
-	y=[]
-	c=0
-	
-	for row in data:
-		X.append(row[:-1])
-		y.append(row[-1])
-	unique=[]
-	for i in range(len(y)):
-		if y[i] not in unique:
-			unique.append(y[i])
-	for i in range(len(y)):
-		y[i]=unique.index(y[i])
-	for i in range(len(X)):
-		for j in range(len(X[0])):
-			X[i][j]=float(X[i][j])
-	for i in range(len(X)):
-		X[i]=[1]+X[i]
-	data=[]
-	for i in range(len(X)):
-		data.append(X[i]+[y[i]])
-	return data
+def get_data(file,y_in,flag=0):
+    reader = csv.reader(open("../datasets/"+file),delimiter=",")
+    data=[]
+    c=0
+    for row in reader:
+        if(c==0):
+            c+=1
+            continue
+        data.append(row)
+    random.seed(123)
+    shuffle(data)
+    for item in data:
+        item[-1], item[y_in] = item[y_in], item[-1]
+
+    X=[]
+    y=[]
+    c=0
+
+    for row in data:
+        X.append(row[:-1])
+        y.append(row[-1])
+    unique=[]
+    for i in range(len(y)):
+        if y[i] not in unique:
+            unique.append(y[i])
+    for i in range(len(y)):
+        if flag:
+            y[i]=1-unique.index(y[i])
+        else:
+            y[i]=unique.index(y[i])
+    for i in range(len(X)):
+        for j in range(len(X[0])):
+            X[i][j]=float(X[i][j])
+    for i in range(len(X)):
+        X[i]=[1]+X[i]
+    data=[]
+    for i in range(len(X)):
+        data.append(X[i]+[y[i]])
+    return data
 
 
 iris=get_data("IRIS.csv",-1)
 print("For IRIS dataset")
-evaluate_algorithm(iris,10,0.5)
+evaluate_algorithm(iris,10,0.1)
 print("="*100)
 print("For SPECT dataset")
-scept=get_data("SPECT.csv",0)
-evaluate_algorithm(scept,10,0.5)
+scept=get_data("SPECT.csv",0,1)
+is_scept=True
+evaluate_algorithm(scept,10,0.1)
 
-
-# X_train,y_train,X_test,y_test=preprocess_data("SPECT.csv",'Class')
-# parameters=nn_model(X_train,y_train,5)
-# pred=predict(parameters,X_test)
-
-# print("SPECT dataset:")
-# print("accuracy :"+accuracy_metric(y_test.reshape(-1,1),pred))
-# print(" (precision,recall): "+confusion_matrix(y_test.reshape(-1,1),pred))
-
-# X_train,y_train,X_test,y_test=preprocess_data("IRIS.csv",'class')
-# parameters=nn_model(X_train,y_train,5)
-# pred=predict(parameters,X_test)
-
-# print("IRIS dataset:")
-# print("accuracy :"+accuracy_metric(y_test.reshape(-1,1),pred))
-# print(" (precision,recall): "+confusion_matrix(y_test.reshape(-1,1),pred))
 
