@@ -53,27 +53,29 @@ def seperate_classes(data):
 
 def attribute_proba(classes,data):
     n_f=len(data[0])-1
-    prob_class=[None for _ in range(len(classes))]
+    prob_class={}
     summary={}
     i=0
     tot=0
     for classes,indices in classes.items():
         temp=[{} for _ in range(n_f)]
+        print(len(indices))
         for ind in indices:
             for attr in range(n_f):
                 if str(data[ind][attr]) not in temp[attr]:
                     temp[attr][str(data[ind][attr])]=1
                 else:
                     temp[attr][str(data[ind][attr])]+=1
+        print(temp)
         for t in temp:
             for k,v in t.items():
                 t[k]=v/len(indices)
         summary[classes]=temp
-        prob_class[i]=len(indices)
+        prob_class[classes]=len(indices)/len(data)
         tot+=len(indices)
-        i+=1
-    for i in range(len(prob_class)):
-        prob_class[i]/=tot
+    # for k,v in prob_class.items():
+    #     prob_class[k]=v/tot
+    print(prob_class)
     return summary,prob_class
 
 def maxi(vec):
@@ -85,18 +87,20 @@ def maxi(vec):
     return max_i
 
 def predict(te,summary,prob_class):
-    prob=[prob_class[i] for i in range(len(summary))]
+    prob={}
     max=-1
-    for i in range(len(prob)):
+    mclass=''
+    for k,v in prob_class.items():
+        prob[k]=v
         for attr in range(len(te)-1):
             try:
-                prob[i]*=summary[str(i)][attr][str(te[attr])]
+                prob[k]*=summary[str(i)][attr][str(te[attr])]
             except:
                 pass
-        if prob[i]>max:
-            max=prob[i]
-            maxi=i
-    return maxi
+        if prob[k]>max:
+            max=prob[k]
+            mclass=k
+    return int(mclass)
 
 def predict_all(data,summary,prob_class):
     pred=[]

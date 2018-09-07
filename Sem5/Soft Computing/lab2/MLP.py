@@ -135,23 +135,7 @@ def predict(parameters, X):
     predictions=[1 if A2[0][i]>0.6 else 0   for i in range(A2.shape[1])] 
     return predictions
 
-# def preprocess_data(file,label):
-#     data=pd.read_csv("../datasets/"+file,delimiter=",")
-#     data = data.sample(frac=1,random_state=123).reset_index(drop=True)
-#     data[label] = pd.Categorical.from_array(data[label]).labels
-#     X=data.drop([label],axis=1)
-#     y=data[label]
-#     m=X.shape[0]
-#     test_size=int(0.7*m)
-#     X_train=X[:test_size]
-#     y_train=y[:test_size]
-#     X_test=X[test_size:]
-#     y_test=y[test_size:]
-#     X_train=np.array(X_train).T
-#     y_train=np.array(y_train).reshape(1,y_train.shape[0])
-#     X_test=np.array(X_test).T
-#     y_test=np.array(y_test).reshape(1,y_test.shape[0])
-#     return X_train,y_train,X_test,y_test
+
 
 def accuracy_metric(actual, predicted):
 	correct = 0
