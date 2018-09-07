@@ -2,7 +2,7 @@ import csv
 import random
 from random import shuffle
 from random import randrange
-random.seed(2018)
+random.seed(123)
 
 def get_data(file,y_in,bias=False):
     reader = csv.reader(open("../datasets/"+file),delimiter=",")
@@ -13,7 +13,7 @@ def get_data(file,y_in,bias=False):
             c+=1
             continue
         data.append(row)
-    shuffle(data)
+    # shuffle(data)
     for item in data:
         item[-1], item[y_in] = item[y_in], item[-1]
     X=[]
@@ -28,7 +28,7 @@ def get_data(file,y_in,bias=False):
         if y[i] not in unique:
             unique.append(y[i])
     for i in range(len(y)):
-        y[i]=unique.index(y[i])
+        y[i]=1-unique.index(y[i])
     for i in range(len(X)):
         for j in range(len(X[0])):
             X[i][j]=float(X[i][j])
@@ -55,18 +55,18 @@ def attribute_proba(classes,data):
     n_f=len(data[0])-1
     prob_class={}
     summary={}
-    i=0
+    # i=0
     tot=0
     for classes,indices in classes.items():
         temp=[{} for _ in range(n_f)]
-        print(len(indices))
+        # print(len(indices))
         for ind in indices:
             for attr in range(n_f):
                 if str(data[ind][attr]) not in temp[attr]:
                     temp[attr][str(data[ind][attr])]=1
                 else:
                     temp[attr][str(data[ind][attr])]+=1
-        print(temp)
+        # print(temp)
         for t in temp:
             for k,v in t.items():
                 t[k]=v/len(indices)
@@ -75,7 +75,7 @@ def attribute_proba(classes,data):
         tot+=len(indices)
     # for k,v in prob_class.items():
     #     prob_class[k]=v/tot
-    print(prob_class)
+    # print(prob_class)
     return summary,prob_class
 
 def maxi(vec):
@@ -94,12 +94,13 @@ def predict(te,summary,prob_class):
         prob[k]=v
         for attr in range(len(te)-1):
             try:
-                prob[k]*=summary[str(i)][attr][str(te[attr])]
+                prob[k]=prob[k]*summary[k][attr][str(te[attr])]
             except:
                 pass
         if prob[k]>max:
             max=prob[k]
             mclass=k
+    # print(max)
     return int(mclass)
 
 def predict_all(data,summary,prob_class):
