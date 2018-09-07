@@ -282,11 +282,11 @@ def get_data(file,y_in):
 
 iris=get_data("IRIS.csv",-1)
 print("For IRIS dataset")
-evaluate_algorithm(iris,10)
+evaluate_algorithm(iris,10,0.5)
 print("="*100)
 print("For SPECT dataset")
 scept=get_data("SPECT.csv",0)
-evaluate_algorithm(scept,10,0.1)
+evaluate_algorithm(scept,10,0.5)
 
 
 # X_train,y_train,X_test,y_test=preprocess_data("SPECT.csv",'Class')
