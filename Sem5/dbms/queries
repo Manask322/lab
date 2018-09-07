@@ -70,3 +70,18 @@ GROUP BY blockfloor,
         blockcode
 ORDER BY blockfloor,
         blockcode;
+
+------------------------------------------------
+create table undergoes(patient int,procedureID int,procDate date,physician int,assistingnurse int,CONSTRAINT pk_undergoes primary key (patient,procedureID,procDate),foreign key(patient) references patient(ssn),foreign key(procedureID) references procedur(code),foreign key(physician) references physician(employeeid),foreign key(assistingnurse) references nurse(employeeid));
+------------------------
+
+insert into procedur(code,name,cost) values
+(1,'Reverse Rhinopodoplasty',1500),
+(2,'Obtuse Pyloric Recombobulation',3750),
+(3,'Folded Demiophtalmectomy',4500),
+(4,'Complete Walletectomy',10000),
+(5,'Obfuscated Dermogastrotomy',4899);
+    
+-------------------------------------------
+Next set of assignment
+select name from patient where ssn IN (select patient  from undergoes where procedureID INnt  from undergoes where procedureID IN (select code from procedur where cost>5000));procedur where cost>5000));
