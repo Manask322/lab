@@ -11,7 +11,7 @@ int main()
 		for(j=0;j<n;j++)
 		{
 			emp[i][j]=4000*i*j;
-			printf("%d\n",emp[i][j]);
+			// printf("%d\n",emp[i][j]);
 		}
 	}
 	double t1=omp_get_wtime();
@@ -32,7 +32,7 @@ int main()
 					emp[i][j]-=sub;
 					total-=sub;
 				}
-				printf("Total= %d thread= %d\n",total,omp_get_thread_num());
+				// printf("Total= %d thread= %d\n",total,omp_get_thread_num());
 			}
 		}
 	}
