@@ -5,7 +5,7 @@ int tid,x=10;
 void main()
 {
 	
-	#pragma omp parallel num_threads(4) 
+	#pragma omp parallel num_threads(4)
 	{
 		tid=omp_get_thread_num();
 		#pragma omp master
