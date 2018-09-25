@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #define CHUNKSIZE 10
 #define N 100
-int main () 
+int main() 
 {
 	int nthreads, tid, i, chunk;
 	float a[N], b[N], c[N];
