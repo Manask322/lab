@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include<omp.h>
-int tid,x=10;
+int tid,x;
 #pragma omp threadprivate(x,tid)
 void main()
 {
-	
-	#pragma omp parallel num_threads(4)
+	x=3;
+	#pragma omp parallel num_threads(4) copyin(x)
 	{
 		tid=omp_get_thread_num();
 		#pragma omp master
@@ -18,7 +18,7 @@ void main()
 			x=x+2;
 		printf("Thread % d Value of x is %d\n",tid,x);
 	}//#pragma omp barrier
-	#pragma omp parallel num_threads(4)
+	#pragma omp parallel num_threads(4) copyin(x)
 	{
 		#pragma omp master
 		{
