@@ -10,4 +10,5 @@ void main()
 		x=x+1;
 		printf("Hi from %d\n value of x:%d\n",id,x);
 	}
+	printf("%d",x);
 }

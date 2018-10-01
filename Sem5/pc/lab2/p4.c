@@ -12,10 +12,12 @@ void main()
 		int id=omp_get_thread_num();
 		#pragma omp for collapse(2)
 		for(i=0;i<n;i++)
-		for(j=0;j<n;j++)
 		{
-			a[i][j]=i+j;
-			printf("thread : %d a[%d][%d] is %d\n",id,i,j,a[i][j]);
+			for(j=0;j<n;j++)
+			{
+				a[i][j]=i+j;
+				printf("thread : %d a[%d][%d] is %d\n",id,i,j,a[i][j]);
+			}
 		}
 	}
 	t2=omp_get_wtime();
