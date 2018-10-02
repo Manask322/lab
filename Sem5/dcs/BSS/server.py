@@ -23,3 +23,4 @@ data=pickle.dumps(ip_list)
 for client in clients_list:
     client.send(data)
     client.close()
+server.close()
