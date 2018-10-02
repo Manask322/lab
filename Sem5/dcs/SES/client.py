@@ -4,6 +4,7 @@ import sys
 from time import sleep
 import threading
 import select
+import copy
 
 list_of_ip=None
 rank=int(sys.argv[1])
@@ -45,11 +46,12 @@ def update_clock(msg,sender):
                 my_memory[i][k]=max(my_memory[i][k],recieved_memory[i][k]) 
 
 def listen_thread():
-    global my_listen_addr,received_msg,flush,inp_flag
+    global my_listen_addr,received_msg,flush,inp_flag,my_clock
     mySock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     mySock.bind(my_listen_addr)
     while True:
         recv_msg=mySock.recvfrom(1024)
+        print("still listening....")
         if isvalid(pickle.loads(recv_msg[0])):     
             received_msg.append(pickle.loads(recv_msg[0]))
             msg=received_msg.pop()
@@ -73,24 +75,26 @@ def listen_thread():
 def isvalid(message):
     global buffer,my_clock
     sender_memory_clock=message[n+1][rank]
-    print(my_clock,sender_memory_clock)
     for k in range(len(my_clock)):
         if my_clock[k]<sender_memory_clock[k]:
             return False    
     return True
 
+def thread_send(msg,process,p):
+    sleep(5)
+    print("sending to ",p)
+    process.sendto(msg,(list_of_ip[p][0],list_of_ip[p][1]+1))
 
-def send(delay=False,p=None):
+def send(msg,delay=False,p=None):
     process=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    msg=[rank]+my_clock+[my_memory]
+    print(" msg : ",my_memory[:])
     msg=pickle.dumps(msg)
     if delay:
-        sleep(5)
-        process.sendto(msg,(list_of_ip[p][0],list_of_ip[p][1]+1))
+        print(my_memory)
+        threading.Thread(target=thread_send,args=(msg,process,p)).start()
     else:
         process.sendto(msg,(list_of_ip[p][0],list_of_ip[p][1]+1))
-    my_memory[p]=my_clock
-    process.close()
+    my_memory[p]=my_clock[:]
 
 
 if __name__ == '__main__':
@@ -109,11 +113,15 @@ if __name__ == '__main__':
             inp_flag=0
             if inp[0]=='sm':
                 my_clock[rank]+=1
-                send(False,int(inp[1]))
-                sleep(0.1)
+                msg=[rank]+my_clock+[my_memory]
+                print("mempry before sending ",my_memory,my_clock)
+                send(msg,False,int(inp[1]))
             elif inp[0]=='smd':
                 my_clock[rank]+=1
-                send(True,int(inp[1]))
+                msg=[rank]+copy.copy(my_clock)+[copy.deepcopy(my_memory)]
+                print("mempry before sending ",my_memory,my_clock)
+                send(msg,True,int(inp[1]))
+                print("mempry after sending smd",my_memory,my_clock)
             else:
                 pass
     except KeyboardInterrupt:
