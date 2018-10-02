@@ -26,9 +26,9 @@ def update():
     global my_clock
     for msg in buffer:
         if isvalid(msg):
-            print(" recieved after buffer msg: ",msg[1:]," from : ",msg[0],"\n")
             for i in range(len(my_clock)):
                 my_clock[i]=max(my_clock[i],msg[1+i])
+            print(" recieved after buffer msg: ",msg[1:]," from : ",msg[0]," myclock ",my_clock,"\n")            
             buffer.remove(msg)
 
 def listen_thread():
@@ -71,42 +71,55 @@ def isvalid(message):
                 return False
     return True
 
-def broadcast(msg):
-    msg=pickle.dumps(msg)
-    process=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    for i in range(len(list_of_ip)):
-        if i!=rank:
-            sleep(0.1)
-            process.sendto(msg,(list_of_ip[i][0],list_of_ip[i][1]+1))
-    process.close()
+
+def broadcast(msg,delay=False,p=None):
+    if delay:
+        msg=pickle.dumps(msg)
+        process=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        for i in range(len(list_of_ip)):
+            if i!=rank:
+                if i==p:
+                    sleep(1)
+                process.sendto(msg,(list_of_ip[i][0],list_of_ip[i][1]+1))
+    else:
+        msg=pickle.dumps(msg)
+        process=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        for i in range(len(list_of_ip)):
+            if i!=rank:
+                sleep(0.1)
+                process.sendto(msg,(list_of_ip[i][0],list_of_ip[i][1]+1))
+        process.close()
 
 
 if __name__ == '__main__':
     get_peers_addr()
     my_clock=[0 for _ in range(len(list_of_ip))]
     my_listen_addr=(list_of_ip[rank][0],list_of_ip[rank][1]+1)
-    threading.Thread(target=listen_thread).start()
-    print("press whenever you want to broadcast\n")
-    while True:
-        # if buffer_flag==1:
-        #     print("Buffered msg : ",buffer[-1][1:]," from process : ",buffer[-1][0])
-        #     buffer_flag=0
-        # while(len(received_msg)):
-        #     msg=received_msg.pop()
-        #     for i in range(len(msg[1:])):
-        #         my_clock[i]=max(my_clock[i],msg[i])
-        #     print("recieved msg from : ",msg[0]," msg: ",msg[1:])
-        inp_flag=1
-        inp=input("")
-        inp_flag=0
-        if inp=='bc':
-            my_clock[rank]+=1
-            broadcast([rank]+my_clock)
-            sleep(0.1)
-        elif inp=='bcd':
-            my_clock[rank]+=1
-            sleep(2)
-            broadcast([rank]+my_clock)
-            sleep(1)
-        else:
-            pass
+    t=threading.Thread(target=listen_thread)
+    t.start()
+    print("enter 'bc' whenever you want to broadcast and 'bcd:<process_no>' to make a delay in bc for that process\n")
+    try:
+        while True:
+            # if buffer_flag==1:
+            #     print("Buffered msg : ",buffer[-1][1:]," from process : ",buffer[-1][0])
+            #     buffer_flag=0
+            # while(len(received_msg)):
+            #     msg=received_msg.pop()
+            #     for i in range(len(msg[1:])):
+            #         my_clock[i]=max(my_clock[i],msg[i])
+            #     print("recieved msg from : ",msg[0]," msg: ",msg[1:])
+            inp_flag=1
+            inp=input("").split(":")
+            inp_flag=0
+            if inp[0]=='bc':
+                my_clock[rank]+=1
+                broadcast([rank]+my_clock)
+                sleep(0.1)
+            elif inp[0]=='bcd':
+                my_clock[rank]+=1
+                broadcast([rank]+my_clock,True,int(inp[1]))
+            else:
+                pass
+    except KeyboardInterrupt:
+        t.join()
+        print("Bye!")
