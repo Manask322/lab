@@ -1,49 +1,25 @@
-import socket 
-import threading
+import socket
+import select
 import sys
-import bss
-import time
+import pickle
+# from thread import *
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) 
-sock.bind(("10.52.99.173",8000))
-flag = [1,1,1]
-IP = ['10.0.0.1','10.0.0.2','10.0.0.3']
-d = { '10.0.0.2' : "giri" , '10.0.0.3' : "hari"}
+server_ip=''
+server_port=8001
+server=socket.socket()
+server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+server.bind(('',server_port))
+server.listen(100)
 
-def receiver(threadname,x):
-	global sock
-	while True:
-		data , add = sock.recvfrom(1024)
-		if not bss.check(data, add, flag):
-			break
-	sock.close()	
+clients_list=[]
+ip_list=[]
+while len(ip_list)<3:
+    client,addr=server.accept()
+    print(addr)
+    clients_list.append(client)
+    ip_list.append(addr)
 
-bss.initialise(3,0)
-
-UDP_PORT = 8000
-thread = threading.Thread(target = receiver , args = ("Receive" ,0 ))
-thread.start()
-print "Enter data to be sent. Enter \"exit\" to exit"
-message=raw_input()
-while message!="exit":
-	bss.update()
-	message = message.replace(" " ,"~")
-	message += " "
-	for i in bss.timestamp:
-		message += str(i) + ","
-	message += " " + str(bss.my_index)
-	for i in range(len(flag)):
-		if i != bss.my_index and flag[i] == 1:
-			sock.sendto(message,(IP[i],UDP_PORT))
-	message = raw_input()
-message += " "
-bss.update()
-for i in bss.timestamp:
-	message += str(i) + ","
-message += " " + str(bss.my_index)
-for i in range(len(flag)):
-	if i!=bss.my_index and flag[i]:
-		sock.sendto(message,(IP[i],UDP_PORT))	
-sock.close()
-sys.exit(0)
-print "system exit"
+data=pickle.dumps(ip_list)
+for client in clients_list:
+    client.send(data)
+    client.close()
