@@ -1,13 +1,17 @@
-k=3
+import random
+from random import randrange
+import csv
+
+k=9
 n_classes=2
 def find_class(train,test):
     global k,n_classes
     distances=[]
-    for i in range(len(train)-1):
+    for i in range(len(train)):
         dist=0
-        for x1,x2 in zip(train[i],test):
+        for x1,x2 in zip(train[i][:-1],test):
             dist+=(x2-x1)**2
-        distances.push_back([dist,i])
+        distances.append([dist,train[i][-1]])
     distances=sorted(distances,key=lambda x:x[0])
     classes=[0 for _ in range(n_classes)]
     max=0
@@ -122,17 +126,17 @@ def evaluate_algorithm(dataset, n_folds):
 			row_copy = list(row)
 			test_set.append(row_copy)
 			actual.append(row[-1])
-		predicted ,_= predict(train_set,test_set)
+		predicted = predict(train_set,test_set)
 		print("FOLD ",f)
 		print("predicted :",predicted)
-		print("actual :",actual)
+		print("actual    :",actual)
 		accuracy = accuracy_metric(actual, predicted)
 		precision,recall=confusion_matrix(actual,predicted)
 		average_acc+=accuracy
 		average_prec+=precision
 		average_recall+=recall
-		print("accuracy :"+str(accuracy))
-		print("precision :"+str(precision))
+		print("accuracy  : "+str(accuracy))
+		print("precision : "+str(precision))
 		print("recall :"+str(recall))
 		print("-"*90)
 		scores.append(["accuracy :"+str(accuracy),"precision :"+str(precision),"recall :"+str(recall)])
@@ -140,3 +144,7 @@ def evaluate_algorithm(dataset, n_folds):
 	print("average accuracy :",average_acc/n_folds)
 	print("average precision :",average_prec/n_folds)
 	print("average recall :",average_recall/n_folds)
+
+data=get_data("SPECT.csv",0,flag=1)
+print(data[0])
+evaluate_algorithm(data,10)
