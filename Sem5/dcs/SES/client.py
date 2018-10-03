@@ -51,7 +51,6 @@ def listen_thread():
     mySock.bind(my_listen_addr)
     while True:
         recv_msg=mySock.recvfrom(1024)
-        print("still listening....")
         if isvalid(pickle.loads(recv_msg[0])):     
             received_msg.append(pickle.loads(recv_msg[0]))
             msg=received_msg.pop()
@@ -82,15 +81,12 @@ def isvalid(message):
 
 def thread_send(msg,process,p):
     sleep(5)
-    print("sending to ",p)
     process.sendto(msg,(list_of_ip[p][0],list_of_ip[p][1]+1))
 
 def send(msg,delay=False,p=None):
     process=socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    print(" msg : ",my_memory[:])
     msg=pickle.dumps(msg)
     if delay:
-        print(my_memory)
         threading.Thread(target=thread_send,args=(msg,process,p)).start()
     else:
         process.sendto(msg,(list_of_ip[p][0],list_of_ip[p][1]+1))
@@ -114,14 +110,11 @@ if __name__ == '__main__':
             if inp[0]=='sm':
                 my_clock[rank]+=1
                 msg=[rank]+my_clock+[my_memory]
-                print("mempry before sending ",my_memory,my_clock)
                 send(msg,False,int(inp[1]))
             elif inp[0]=='smd':
                 my_clock[rank]+=1
-                msg=[rank]+copy.copy(my_clock)+[copy.deepcopy(my_memory)]
-                print("mempry before sending ",my_memory,my_clock)
+                msg=[rank]+my_clock+[my_memory]
                 send(msg,True,int(inp[1]))
-                print("mempry after sending smd",my_memory,my_clock)
             else:
                 pass
     except KeyboardInterrupt:
