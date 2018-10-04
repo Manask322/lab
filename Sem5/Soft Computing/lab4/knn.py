@@ -2,7 +2,7 @@ import random
 from random import randrange
 import csv
 
-k=9
+k=5
 n_classes=2
 def find_class(train,test):
     global k,n_classes
@@ -145,6 +145,5 @@ def evaluate_algorithm(dataset, n_folds):
 	print("average precision :",average_prec/n_folds)
 	print("average recall :",average_recall/n_folds)
 
-data=get_data("SPECT.csv",0,flag=1)
-print(data[0])
+data=get_data("IRIS.csv",-1)
 evaluate_algorithm(data,10)
