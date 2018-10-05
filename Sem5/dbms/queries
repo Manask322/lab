@@ -84,4 +84,59 @@ insert into procedur(code,name,cost) values
     
 -------------------------------------------
 Next set of assignment
-select name from patient where ssn IN (select patient  from undergoes where procedureID INnt  from undergoes where procedureID IN (select code from procedur where cost>5000));procedur where cost>5000));
+
+
+1) 
+ select patient.name,physician.name from patient inner join physician on patient.pcp=physician.employeeid where patient.pcp not in (select head from department);
+
+2)
+SELECT pt.name AS "Patient",
+       p.name AS "Primary Physician",
+       n.name AS "Nurse"
+FROM appointment a
+JOIN patient pt ON a.patient=pt.ssn
+JOIN nurse n ON a.prepnurse=n.employeeid
+JOIN physician p ON pt.pcp=p.employeeid
+WHERE a.patient IN
+    (SELECT patient
+     FROM appointment a
+     GROUP BY a.patient
+     HAVING count(*)>=2)
+  AND n.registered='true';
+
+3)
+select patient.name,physician.name 
+from patient 
+inner join physician on patient.pcp=physician.employeeid 
+where patient.ssn in 
+(select patient from undergoes inner join procedur on undergoes.procedureID=procedur.code where cost>5000);
+
+4)
+
+SELECT p.name AS "Physician",
+       p.position AS "Position",
+       pr.name AS "Procedure",
+       u.procDate AS "Date of Procedure",
+       pt.name AS "Patient",
+       t.certificationexpires AS "Expiry Date of Certificate"
+FROM physician p,
+     undergoes u,
+     patient pt,
+     procedur pr,
+     trained_in t
+     WHERE u.patient = pt.ssn
+  AND u.procedureID = pr.code
+  AND u.physician = p.employeeid
+  AND pr.code = t.treatment
+  AND p.employeeid = t.physician
+  AND u.procDate > t.certificationexpires;
+
+5)
+select name from physician 
+where employeeid in
+(select undergoes.physician from 
+undergoes left join trained_in on undergoes.procedureID=trained_in.treatment 
+and undergoes.physician = trained_in.physician 
+where treatment is NULL);
+
+

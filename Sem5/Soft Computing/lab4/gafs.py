@@ -9,13 +9,13 @@ y = nb.df_spect['Class']
 
 class GAFS():
 
-    def __init__(self, mutation_rate = 0.001, iterations =30, pool_size = 50):
+    def __init__(self,cross_rate=0.25,mutation_rate = 0.1, iterations=80, pool_size = 30):
         self.mutation_rate = mutation_rate
         self.iterations = iterations
         self.pool_size = pool_size
         self.pool = np.array([])
         self.iterations_results = {}
-
+        self.cross_rate=cross_rate
 
     def results(self):
         return (self.pool[0], [idx for idx, gene in enumerate(self.pool[0]) if gene==1])
@@ -28,7 +28,7 @@ class GAFS():
         plt.plot(avs0, label='Best Solution Score')
         plt.legend()
         plt.show()
-
+    
 
     def fit(self, evaluate, X, y, verbose=True):
 

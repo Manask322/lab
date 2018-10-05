@@ -2,7 +2,7 @@ import random
 from random import randrange
 import csv
 
-k=5
+k=7
 n_classes=2
 def find_class(train,test):
     global k,n_classes
@@ -12,7 +12,7 @@ def find_class(train,test):
         for x1,x2 in zip(train[i][:-1],test):
             dist+=(x2-x1)**2
         distances.append([dist,train[i][-1]])
-    distances=sorted(distances,key=lambda x:x[0])
+    distances=sorted(distances,key=lambda x:x[0]) 
     classes=[0 for _ in range(n_classes)]
     max=0
     for i in range(k):
@@ -32,7 +32,6 @@ def get_data(file,y_in,flag=0,bias=False):
             continue
         data.append(row)
     random.seed(123)
-    # shuffle(data)
     for item in data:
         item[-1], item[y_in] = item[y_in], item[-1]
 
@@ -45,7 +44,7 @@ def get_data(file,y_in,flag=0,bias=False):
         y.append(row[-1])
     unique=[]
     for i in range(len(y)):
-        if y[i] not in unique:
+        if y[i] not in unique:	
             unique.append(y[i])
     for i in range(len(y)):
         if flag:
@@ -126,6 +125,10 @@ def evaluate_algorithm(dataset, n_folds):
 			row_copy = list(row)
 			test_set.append(row_copy)
 			actual.append(row[-1])
+		# print("train set :")
+		# print(train_set)
+		# print("test set :")
+		# print(test_set)
 		predicted = predict(train_set,test_set)
 		print("FOLD ",f)
 		print("predicted :",predicted)
@@ -145,5 +148,11 @@ def evaluate_algorithm(dataset, n_folds):
 	print("average precision :",average_prec/n_folds)
 	print("average recall :",average_recall/n_folds)
 
-data=get_data("IRIS.csv",-1)
-evaluate_algorithm(data,10)
+spect=get_data("SPECT.csv",0,flag=1)
+iris=get_data("IRIS.csv",-1)
+print("="*90)
+print("SPECT")
+evaluate_algorithm(spect,10)
+print("IRIS")
+print("="*90)
+evaluate_algorithm(iris,10)
